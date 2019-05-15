@@ -1,8 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./routes/usersRouter");
+const init = require("./initializer");
+const data = require("./data");
 
 const app = express();
+init(data);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
