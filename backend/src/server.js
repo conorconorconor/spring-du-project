@@ -14,7 +14,7 @@ app.use("/api/users", userRouter);
 
 //catch-all route
 app.use("/", (request, response) => {
-  response.send("Welcome to the Beer API");
+  response.send("Welcome to Spring 2019 DU Project");
 });
 
 mongoose.connect("mongodb://localhost:27017/users", { useNewUrlParser: true });
