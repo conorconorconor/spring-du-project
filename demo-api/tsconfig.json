@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "allowJS": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "outDir": "./build",
+  },
+  "include": ["src/**/*"],
+}
