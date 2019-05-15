@@ -4,4 +4,4 @@ const data = [
   { firstName: "Conor", lastName: "Dickens" }
 ];
 
-module.exports = data;
+export default data;
