@@ -1,10 +1,11 @@
 {
-  "name": "beer-api",
+  "name": "du-project-api",
   "version": "1.0.0",
-  "description": "beer api",
+  "description": "du project api",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -15,9 +16,12 @@
   "bugs": {
     "url": "https://github.com/cecoppinger/beer-api/issues"
   },
-  "homepage": "https://github.com/cecoppinger/beer-api#readme",
+  "homepage": "https://github.com/cecoppinger/spring-du-project#readme",
   "dependencies": {
     "express": "^4.16.4",
     "mongoose": "^5.5.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
   }
 }
