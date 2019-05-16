@@ -1,4 +1,4 @@
-@import './_colors.scss';
+@import "./_colors.scss";
 .user {
   &-list {
     padding: 4em;
@@ -7,7 +7,7 @@
     &-search {
       margin-right: 1em;
     }
-    ::ng-deep &-sortBy>label {
+    ::ng-deep &-sortBy > label {
       position: relative;
       top: 1em;
       margin-right: 1em;
@@ -51,7 +51,7 @@
     }
     &-form {
       &-row {
-        >mat-form-field {
+        > mat-form-field {
           margin-right: 1em;
           &:last-child {
             margin-right: 0;

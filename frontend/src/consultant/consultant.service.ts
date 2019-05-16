@@ -1,15 +1,15 @@
 import { Injectable } from "@angular/core";
-import { User } from "./user";
+import { Consultant } from "./consultant";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
 })
-export class UserService {
+export class ConsultantService {
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>("/api/users");
+  getConsultants(): Observable<Consultant[]> {
+    return this.http.get<Consultant[]>("/api/consultants");
   }
 }
