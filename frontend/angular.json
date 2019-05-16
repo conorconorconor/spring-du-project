@@ -18,8 +18,8 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [],
+            "assets": ["src/shared/assets"],
+            "styles": ["src/shared/styles.scss"],
             "scripts": [],
             "es5BrowserSupport": true
           },
