@@ -1,8 +1,11 @@
-const User = require("./models/user");
+import { IConsultant } from "./interfaces/consultant";
+
+// const Consultant = require("./models/consultant");
+import { Consultant } from "./models/consultant";
 const Mongo = require("mongodb").MongoClient;
 const url = "mongodb://localhost:27017";
 
-module.exports = function init(data) {
+function init(data) {
   Mongo.connect(url, (err, db) => {
     if (err) {
       console.log(err);
@@ -13,10 +16,9 @@ module.exports = function init(data) {
         } else {
           collection.remove({}, () => {
             for (let entry of data) {
-              const newUser = new User({
-                firstName: entry.firstName,
-                lastName: entry.lastName
-              });
+              const newUser: IConsultant = new Consultant();
+              newUser.firstName = entry.firstName;
+              newUser.lastName = entry.lastName;
               newUser.save((err, document) => {
                 if (err) {
                   console.log(err);
@@ -30,4 +32,6 @@ module.exports = function init(data) {
       });
     }
   });
-};
+}
+
+export { init };
