@@ -1,15 +1,12 @@
 // const userService = require("../services/userService");
-const User = require("../models/user");
 const express = require("express");
+import { Consultant } from "../models/consultant";
+import { ConsultantManager } from "../services/consultantService";
 
 const userRouter = express.Router();
 
-handleError = err => {
-  res.status(400).send(err);
-};
-
 userRouter.post("/", (req, res) => {
-  let user = new User();
+  let user = new Consultant();
   user.firstName = req.body.firstName;
   user.lastName = req.body.lastName;
   user.save((err, document) => {
@@ -22,7 +19,7 @@ userRouter.post("/", (req, res) => {
 });
 
 userRouter.get("/", (_, res) => {
-  User.find((err, docs) => {
+  Consultant.find((err, docs) => {
     if (err) {
       res.status(400).send(err);
     } else {
@@ -32,7 +29,7 @@ userRouter.get("/", (_, res) => {
 });
 
 userRouter.get("/:lastName", (req, res) => {
-  User.find({ lastName: lastName }, (err, docs) => {
+  User.find({ lastName: req.params.lastName }, (err, docs) => {
     if (err) {
       res.status(400).send(err);
     } else {
