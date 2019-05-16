@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 // const userService = require("../services/userService");
-var express = require("express");
+var express_1 = require("express");
 var consultant_1 = require("../models/consultant");
-var userRouter = express.Router();
-exports.userRouter = userRouter;
-userRouter.post("/", function (req, res) {
+var consultantRouter = express_1.Router();
+exports.consultantRouter = consultantRouter;
+consultantRouter.post("/", function (req, res) {
     var user = new consultant_1.Consultant();
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
@@ -18,7 +18,7 @@ userRouter.post("/", function (req, res) {
         }
     });
 });
-userRouter.get("/", function (_, res) {
+consultantRouter.get("/", function (_, res) {
     consultant_1.Consultant.find(function (err, docs) {
         if (err) {
             res.status(400).send(err);
