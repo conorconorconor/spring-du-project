@@ -1,13 +1,13 @@
 // const userService = require("../services/userService");
-const express = require("express");
+import { Router } from "express";
 import { Consultant } from "../models/consultant";
 import { ConsultantManager } from "../services/consultantService";
 
-const userRouter = express.Router();
+const consultantRouter = Router();
 
-userRouter.post("/", (req, res) => {
+consultantRouter.post("/", (req, res) => {
   let user = new Consultant();
-  user.firstName = req.body.firstName; 
+  user.firstName = req.body.firstName;
   user.lastName = req.body.lastName;
   user.save((err, document) => {
     if (err) {
@@ -18,7 +18,7 @@ userRouter.post("/", (req, res) => {
   });
 });
 
-userRouter.get("/", (_, res) => {
+consultantRouter.get("/", (_, res) => {
   Consultant.find((err, docs) => {
     if (err) {
       res.status(400).send(err);
@@ -71,4 +71,4 @@ userRouter.get("/", (_, res) => {
 //   });
 // });
 
-export { userRouter };
+export { consultantRouter };

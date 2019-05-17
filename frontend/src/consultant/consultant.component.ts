@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ConsultantService } from "./consultant.service";
 import { Consultant } from "./consultant";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: "app-consultant",
@@ -8,7 +9,7 @@ import { Consultant } from "./consultant";
   styleUrls: ["../shared/styles/user.scss"]
 })
 export class ConsultantComponent implements OnInit {
-  consultants: Consultant[];
+  public consultants$: Observable<Consultant[]>;
 
   constructor(private consultantService: ConsultantService) {}
 
@@ -17,8 +18,6 @@ export class ConsultantComponent implements OnInit {
   }
 
   getConsultants(): void {
-    this.consultantService
-      .getConsultants()
-      .subscribe(consultants => (this.consultants = consultants));
+    this.consultants$ = this.consultantService.getConsultants();
   }
 }

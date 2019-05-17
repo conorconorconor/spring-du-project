@@ -1,7 +1,7 @@
 import * as express from "express";
 import * as mongoose from "mongoose";
 import { init } from "./initializer";
-import { userRouter } from "./routes/consultantRouter";
+import { consultantRouter } from "./routes/consultantRouter";
 import data from "./data";
 
 const app = express();
@@ -10,7 +10,7 @@ init(data);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/api/consultants", userRouter);
+app.use("/api/consultants", consultantRouter);
 
 //catch-all route
 app.use("/", (request, response) => {
