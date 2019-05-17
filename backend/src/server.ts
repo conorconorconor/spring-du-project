@@ -1,8 +1,8 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const userRouter = require("./routes/usersRouter");
-const init = require("./initializer");
-const data = require("./data");
+import * as express from "express";
+import * as mongoose from "mongoose";
+import { init } from "./initializer";
+import { userRouter } from "./routes/consultantRouter";
+import data from "./data";
 
 const app = express();
 init(data);
