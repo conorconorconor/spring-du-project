@@ -7,14 +7,20 @@
   bottom: 0;
   width: 100%;
   height: 50px;
-  
+
   &-links {
-    font-size: .923em;
+    font-size: 0.923em;
     line-height: 2.167;
-    
+
     a {
       white-space: nowrap;
       color: #c6c6c6;
     }
   }
+}
+
+mat-card img {
+  object-fit: cover; /*this makes de image in src fit to the size of specified below*/
+  width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+  height: 80%;
 }
