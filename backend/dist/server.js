@@ -9,7 +9,7 @@ var app = express();
 initializer_1.init(data_1.default);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/api/users", consultantRouter_1.userRouter);
+app.use("/api/consultants", consultantRouter_1.userRouter);
 //catch-all route
 app.use("/", function (request, response) {
     response.send("Welcome to Spring 2019 DU Project");
