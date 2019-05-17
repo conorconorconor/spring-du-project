@@ -4,10 +4,10 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
 import { ConsultantComponent } from "../consultant/consultant.component";
-// import { ConsultantModule } from "../consultant/consultant.module";
 import { FooterModule } from "../footer/footer.module";
 import { HeaderModule } from "../header/header.module";
 import { AppRouting } from "./app.routing";
+import { ConsultantModule } from "../consultant/consultant.module";
 
 @NgModule({
   declarations: [AppComponent, ConsultantComponent],
@@ -16,7 +16,8 @@ import { AppRouting } from "./app.routing";
     HttpClientModule,
     FooterModule,
     HeaderModule,
-    AppRouting
+    AppRouting,
+    ConsultantModule
   ],
   providers: [],
   bootstrap: [AppComponent]

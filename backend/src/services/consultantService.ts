@@ -3,7 +3,7 @@ import { Consultant } from "../models/consultant";
 import { IConsultant } from "../interfaces/consultant";
 import { injectable } from "inversify";
 
-@injectable()
+// @injectable()
 export class ConsultantManager {
   createUser(data) {
     let consultant: IConsultant = new Consultant();
