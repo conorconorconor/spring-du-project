@@ -7,7 +7,7 @@ const userRouter = express.Router();
 
 userRouter.post("/", (req, res) => {
   let user = new Consultant();
-  user.firstName = req.body.firstName;
+  user.firstName = req.body.firstName; 
   user.lastName = req.body.lastName;
   user.save((err, document) => {
     if (err) {

@@ -10,7 +10,7 @@ init(data);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/api/users", userRouter);
+app.use("/api/consultants", userRouter);
 
 //catch-all route
 app.use("/", (request, response) => {
