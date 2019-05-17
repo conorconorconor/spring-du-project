@@ -5,7 +5,6 @@ import { consultantRouter } from "./routes/consultantRouter";
 import data from "./data";
 
 const app = express();
-init(data);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -17,7 +16,10 @@ app.use("/", (request, response) => {
   response.send("Welcome to Spring 2019 DU Project");
 });
 
-mongoose.connect("mongodb://localhost:27017/users", { useNewUrlParser: true });
+mongoose.connect(
+  "mongodb+srv://admin:admin@du-project-mjfgf.mongodb.net/test?retryWrites=true",
+  { useNewUrlParser: true }
+);
 mongoose.connection.on("connected", () => {
   console.log("Connected to users DB");
 });
