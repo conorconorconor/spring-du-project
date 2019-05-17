@@ -8,6 +8,8 @@ import { FooterModule } from "../footer/footer.module";
 import { HeaderModule } from "../header/header.module";
 import { AppRouting } from "./app.routing";
 import { ConsultantModule } from "../consultant/consultant.module";
+import { HomeModule } from '../home/home.module';
+
 
 @NgModule({
   declarations: [AppComponent, ConsultantComponent],
@@ -17,7 +19,8 @@ import { ConsultantModule } from "../consultant/consultant.module";
     FooterModule,
     HeaderModule,
     AppRouting,
-    ConsultantModule
+    ConsultantModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

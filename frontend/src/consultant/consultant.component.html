@@ -1,6 +1,6 @@
 <div>
   <ul>
-    <li *ngFor="let consultant of consultants">
+    <li *ngFor="let consultant of consultants$ | async">
       {{ consultant.firstName }}, {{ consultant.lastName }}
     </li>
   </ul>
