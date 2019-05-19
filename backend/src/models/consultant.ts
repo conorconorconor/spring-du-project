@@ -1,4 +1,4 @@
-import { Document, Schema, Model, model } from "mongoose";
+import { Schema, Model, model } from "mongoose";
 import { IConsultant } from "../interfaces/consultant";
 
 const ConsultantSchema: Schema = new Schema({
