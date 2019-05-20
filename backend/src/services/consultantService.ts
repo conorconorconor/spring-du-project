@@ -1,26 +1,21 @@
 // const express = require("express");
 import { Consultant } from "../models/consultant";
 import { IConsultant } from "../interfaces/consultant";
+import { Service } from "typedi";
 
-// @injectable()
-export class ConsultantManager {
-  createUser(data) {
-    let consultant: IConsultant = new Consultant();
-    // user.firstName = data.firstName;
-    // user.lastName = data.lastName;
-    // user.save((err, document) => {
-    //   if (err) {
-    //     return err;
-    //   } else {
-    //     return document;
-    //   }
-    // });
-    consultant.firstName = data.firstName;
-    consultant.lastName = data.lastName;
-    consultant.email = data.email;
-    consultant.role = data.role;
-    consultant.title = data.title;
+@Service()
+export class ConsultantService {
+  createConsultant(consultant: IConsultant): Promise<IConsultant> {
+    const createdConsultant = new Consultant(consultant);
+    return createdConsultant.save();
+  }
 
-    return consultant.save();
+  getConsultants(): Promise<IConsultant[]> {
+    return Consultant.find().exec();
+  }
+
+  getConsultantById(id: string): Promise<IConsultant> {
+    let result: IConsultant;
+    return Consultant.findById(id).exec();
   }
 }
