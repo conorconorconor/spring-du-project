@@ -1,16 +1,15 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { ConsultantRoutingModule } from './consultant-routing.module';
-import { MatTableModule } from '@angular/material';
-import { ConsultantComponent } from './consultant.component';
-import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { ConsultantRoutingModule } from "./consultant-routing.module";
+import { MatTableModule } from "@angular/material";
+import { ConsultantComponent } from "./consultant.component";
+import { FormsModule } from "@angular/forms";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { ConsultantViewComponent } from "./consultant-view/consultant-view.component";
 
 @NgModule({
-  declarations: [
-    ConsultantComponent
-  ],
+  declarations: [ConsultantComponent, ConsultantViewComponent],
   imports: [
     CommonModule,
     ConsultantRoutingModule,
@@ -19,4 +18,4 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule
   ]
 })
-export class ConsultantModule { }
+export class ConsultantModule {}
