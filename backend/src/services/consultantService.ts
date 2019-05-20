@@ -1,7 +1,6 @@
 // const express = require("express");
 import { Consultant } from "../models/consultant";
 import { IConsultant } from "../interfaces/consultant";
-import { injectable } from "inversify";
 
 // @injectable()
 export class ConsultantManager {

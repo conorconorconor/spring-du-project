@@ -1,15 +1,14 @@
 import * as express from "express";
 import * as mongoose from "mongoose";
-import { init } from "./initializer";
 import { consultantRouter } from "./routes/consultantRouter";
-import data from "./data";
+import * as bodyParser from "body-parser";
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(bodyParser.json());
 
-app.use("/api/consultants", consultantRouter);
+app.use("/consultants", consultantRouter);
 
 //catch-all route
 app.use("/", (request, response) => {
