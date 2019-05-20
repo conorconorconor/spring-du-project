@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ConsultantService } from "./consultant.service";
 import { Consultant } from "./consultant";
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-consultant",
@@ -14,7 +15,9 @@ export class ConsultantComponent implements OnInit {
     "last name", 
     "first name"
   ]
-  constructor(private consultantService: ConsultantService) {}
+  constructor(private consultantService: ConsultantService, private router: Router) {
+
+  }
 
   ngOnInit() {
     this.getConsultants();
@@ -22,5 +25,10 @@ export class ConsultantComponent implements OnInit {
 
   getConsultants(): void {
     this.consultants$ = this.consultantService.getConsultants();
+  }
+
+  goToConsultant(consultant: Consultant): void {
+    this.router.navigate([`consultants/${consultant._id}`]);
+    console.log(consultant)
   }
 }
