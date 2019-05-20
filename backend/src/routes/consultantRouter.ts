@@ -1,4 +1,3 @@
-// const userService = require("../services/userService");
 import { Router } from "express";
 import { Consultant } from "../models/consultant";
 import { ConsultantManager } from "../services/consultantService";
@@ -6,10 +5,14 @@ import { ConsultantManager } from "../services/consultantService";
 const consultantRouter = Router();
 
 consultantRouter.post("/", (req, res) => {
-  let user = new Consultant();
-  user.firstName = req.body.firstName;
-  user.lastName = req.body.lastName;
-  user.save((err, document) => {
+  let consultant = new Consultant();
+  consultant.firstName = req.body.firstName;
+  consultant.lastName = req.body.lastName;
+  consultant.email = req.body.email;
+  consultant.title = req.body.title;
+  consultant.role = req.body.role;
+
+  consultant.save((err, document) => {
     if (err) {
       res.status(400).send(err);
     } else {

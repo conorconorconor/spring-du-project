@@ -13,7 +13,7 @@ import { HomeModule } from "../home/home.module";
 import { GanonModule } from "../ganon/ganon.module";
 
 @NgModule({
-  declarations: [AppComponent, ConsultantComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

@@ -6,11 +6,14 @@ import { Observable } from 'rxjs';
 @Component({
   selector: "app-consultant",
   templateUrl: "./consultant.component.html",
-  styleUrls: ["../shared/styles/user.scss"]
+  styleUrls: ["./consultant.component.scss"]
 })
 export class ConsultantComponent implements OnInit {
   public consultants$: Observable<Consultant[]>;
-
+  public tableHeaders: string[] = [
+    "last name", 
+    "first name"
+  ]
   constructor(private consultantService: ConsultantService) {}
 
   ngOnInit() {
