@@ -18,6 +18,10 @@ export class ConsultantManager {
     // });
     consultant.firstName = data.firstName;
     consultant.lastName = data.lastName;
+    consultant.email = data.email;
+    consultant.role = data.role;
+    consultant.title = data.title;
+
     return consultant.save();
   }
 }
