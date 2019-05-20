@@ -1,1 +1,45 @@
-<h2 style="text-align: center">Home Link Active</h2>
+<div class="home" fxLayout="column">
+  <div fxLayout="row">
+    <div fxFlex></div>
+    <!-- TODO: Hide div when loggedInUser is defined -->
+    <div [hidden]="loggedInUser" fxFlex class="home-login">
+      <h3>Consultant Tracker Login</h3>
+
+      <form (ngSubmit)="login()" #userLoginForm="ngForm" fxLayout="column">
+        <mat-form-field>
+          <!-- TODO: Bind to credentials.username via ngModel -->
+          <input
+            [(ngModel)]="credentials.username"
+            type="text"
+            id="username"
+            name="username"
+            matInput
+            required
+            placeholder="Username"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <!-- TODO: Bind to credentials.password via ngModel -->
+          <input
+            [(ngModel)]="credentials.password"
+            type="password"
+            id="password"
+            name="password"
+            matInput
+            required
+            placeholder="Password"
+          />
+        </mat-form-field>
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          class="home-login-button"
+        >
+          Sign In
+        </button>
+      </form>
+    </div>
+    <div fxFlex></div>
+  </div>
+</div>

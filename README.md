@@ -13,6 +13,7 @@ Project Repository for Final Project
 
 I'm sure there's a better way to do this but for now this is what we've got
 
-- cd into /backend and `npm start`
+- make sure to install all dependencies `npm install`
+- cd into /backend and `npm run dev`
 - cd into /frontend and `npm start`
 - you need another terminal to run your mongo db server
