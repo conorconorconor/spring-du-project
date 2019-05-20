@@ -17,7 +17,7 @@ export class App {
     this.middleWare();
     useExpressServer(this.express, {
       controllers: [ConsultantsController],
-      classTransformer: true
+      classTransformer: false
     });
   }
 

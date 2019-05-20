@@ -24,20 +24,12 @@ export class ConsultantsController {
   }
 
   @Get("/consultants/:id")
-  public getConsultantById(@Param("id") id: number): IConsultant {
-    try {
-      return this.consultantService.getConsultantById(id);
-    } catch (e) {
-      return e;
-    }
+  public getConsultantById(@Param("id") id: string): Promise<IConsultant> {
+    return this.consultantService.getConsultantById(id);
   }
 
   @Post("/consultants")
   public createConsultant(@Body() consultant: IConsultant) {
-    try {
-      return this.consultantService.createConsultant(consultant);
-    } catch (e) {
-      return e;
-    }
+    return this.consultantService.createConsultant(consultant);
   }
 }
