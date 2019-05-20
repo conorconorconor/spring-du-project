@@ -15,12 +15,10 @@ const ConsultantSchema: Schema = new Schema({
     required: true
   },
   role: {
-    type: String,
-    required: true
+    type: String
   },
   title: {
-    type: String,
-    required: true
+    type: String
   }
 });
 
