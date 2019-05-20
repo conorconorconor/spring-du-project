@@ -31,6 +31,16 @@ consultantRouter.get("/", (_, res) => {
   });
 });
 
+consultantRouter.get("/:id", (req, res) => {
+  Consultant.findById(req.params.id, (err, doc) => {
+    if (err) {
+      res.status(404).send(err);
+    } else {
+      res.json(doc);
+    }
+  });
+});
+
 // userRouter.get("/:lastName", (req, res) => {
 //   User.find({ lastName: req.params.lastName }, (err, docs) => {
 //     if (err) {

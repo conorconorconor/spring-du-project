@@ -1,0 +1,5 @@
+<div *ngIf="consultant$ | async as consultant">
+  <div class="consultant-details">
+    {{ consultant.firstName }}, {{ consultant.lastName }}
+  </div>
+</div>
