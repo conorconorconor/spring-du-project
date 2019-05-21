@@ -4,7 +4,9 @@ import {
   Param,
   Res,
   Body,
-  Post
+  Post,
+  Put,
+  Delete
 } from "routing-controllers";
 import { ConsultantService } from "../services/consultantService";
 import { IConsultant } from "../interfaces/consultant";
@@ -28,8 +30,24 @@ export class ConsultantsController {
     return this.consultantService.getConsultantById(id);
   }
 
+  @Put("/consultants/:id")
+  public async updateConsultant(
+    @Param("id") id: string,
+    @Body() updated: IConsultant
+  ): Promise<IConsultant> {
+    return this.consultantService.updateConsultant(id, updated);
+  }
+
   @Post("/consultants")
   public createConsultant(@Body() consultant: IConsultant) {
     return this.consultantService.createConsultant(consultant);
+  }
+
+  @Delete("/consultants/:id")
+  public deleteConsultant(@Param("id") id: string) {
+    this.consultantService.deleteConsultantById(id);
+    return {
+      message: `Delete consultant with id: ${id}`
+    };
   }
 }

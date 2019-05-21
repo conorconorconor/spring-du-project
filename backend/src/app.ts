@@ -35,7 +35,7 @@ export class App {
   private connectToDB() {
     mongoose.connect(
       "mongodb+srv://admin:admin@du-project-mjfgf.mongodb.net/test?retryWrites=true",
-      { useNewUrlParser: true }
+      { useNewUrlParser: true, useFindAndModify: false }
     );
     mongoose.connection.on("connected", () => {
       console.log("Connected to DB");

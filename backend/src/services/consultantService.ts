@@ -5,17 +5,30 @@ import { Service } from "typedi";
 
 @Service()
 export class ConsultantService {
-  createConsultant(consultant: IConsultant): Promise<IConsultant> {
+  public createConsultant(consultant: IConsultant): Promise<IConsultant> {
     const createdConsultant = new Consultant(consultant);
     return createdConsultant.save();
   }
 
-  getConsultants(): Promise<IConsultant[]> {
+  public getConsultants(): Promise<IConsultant[]> {
     return Consultant.find().exec();
   }
 
-  getConsultantById(id: string): Promise<IConsultant> {
+  public getConsultantById(id: string): Promise<IConsultant> {
     let result: IConsultant;
     return Consultant.findById(id).exec();
+  }
+
+  public updateConsultant(
+    id: string,
+    consultant: IConsultant
+  ): Promise<IConsultant> {
+    return Consultant.findOneAndUpdate({ _id: id }, consultant, {
+      new: true
+    }).exec();
+  }
+
+  public deleteConsultantById(id: string): void {
+    Consultant.findByIdAndDelete(id).exec();
   }
 }
