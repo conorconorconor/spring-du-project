@@ -40,15 +40,18 @@ export class ConsultantService {
   //id refers to consultant id
   public async addComment(id: string, comment: IComment): Promise<IConsultant> {
     const newComment = new Comment(comment);
+    let consultant: IConsultant;
     await newComment.save((err, _) => {
       if (err) throw new Error("Not a valid comment?");
     });
-    return Consultant.findById(id, (err, consultant) => {
+    await Consultant.findById(id, (err, result) => {
       if (err) {
         throw new Error("Consultant not found");
       }
-      consultant.comments.push(newComment._id);
-      consultant.save();
+      consultant = result;
     }).exec();
+    consultant.comments.push(newComment._id);
+    await consultant.save();
+    return this.getConsultantById(id);
   }
 }

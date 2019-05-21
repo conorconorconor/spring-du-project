@@ -1,9 +1,9 @@
-<div
+<!-- <div
   class="mat-card"
   fxLayout="column"
   fxLayoutAlign="center center"
   fxLayoutGap="20px"
->
+> -->
 
 <mat-card class="custom" *ngIf="consultant$ | async as consultant">
   <mat-card-header>
@@ -12,13 +12,17 @@
     <mat-card-subtitle>{{ consultant.role }} - {{ consultant.title }}</mat-card-subtitle>
     <mat-card-subtitle>{{ consultant.email }}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <img style="max-width: 25%;" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
   <mat-card-content>
     <p>
       {{ consultant.firstName }} {{ consultant.lastName }} is the smallest of the six original and distinct spitz breeds of dog from Japan.
       A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
       bred for hunting.
     </p>
+    <h2>Comments</h2>
+    <ul>
+      <li *ngFor="let comment of consultant.comments">{{comment.text}}</li>
+    </ul>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="addComment()">Add Comment</button>
@@ -26,9 +30,6 @@
         <button style="margin: 7px" type="submit" mat-raised-button color="primary">
       Edit Consultant
     </button> 
-    <ul>
-      <li *ngFor="let comment of consultant.comments">{{comment.text}}</li>
-    </ul>
   </mat-card-actions>
 </mat-card>
 

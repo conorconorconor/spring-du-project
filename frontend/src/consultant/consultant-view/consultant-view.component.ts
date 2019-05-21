@@ -3,9 +3,9 @@ import { Observable } from "rxjs";
 import { Consultant } from "../consultant";
 import { ConsultantService } from "../consultant.service";
 import { ActivatedRoute } from "@angular/router";
-import { MatDialog } from '@angular/material';
-import { CommentComponent } from '../comment/comment.component';
-import { ConsultantComment } from '../comment';
+import { MatDialog } from "@angular/material";
+import { CommentComponent } from "../comment/comment.component";
+import { ConsultantComment } from "../comment";
 
 @Component({
   selector: "app-consultant-view",
@@ -15,7 +15,6 @@ import { ConsultantComment } from '../comment';
 })
 export class ConsultantViewComponent implements OnInit {
   public consultant$: Observable<Consultant>;
-  public comment: ConsultantComment;
   private id: string = this.route.snapshot.paramMap.get("id");
 
   constructor(
@@ -25,17 +24,24 @@ export class ConsultantViewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.updateConsultant();
+  }
+
+  ngOnChanges() {
+    this.updateConsultant();
+  }
+
+  updateConsultant() {
     this.consultant$ = this.consultantService.getConsultantById(this.id);
   }
 
   addComment(): void {
     let dialog = this.dialog.open(CommentComponent, {
-      width: "1000px",
+      width: "500px"
     });
-    dialog.afterClosed().subscribe(result => {
-      console.log(result.text)
-      this.consultantService.addComment(this.id, result)
-    })
-
+    dialog.afterClosed().subscribe((result: ConsultantComment) => {
+      console.log(result);
+      this.consultant$ = this.consultantService.addComment(this.id, result);
+    });
   }
 }
