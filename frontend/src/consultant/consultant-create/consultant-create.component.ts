@@ -7,7 +7,7 @@ import { FormGroup } from "@angular/forms";
 @Component({
   selector: "app-consultant-create",
   templateUrl: "./consultant-create.component.html",
-  styleUrls: ["./consultant-create.component.css"]
+  styleUrls: ["../../shared/styles/consultant-create.scss"]
 })
 export class ConsultantCreateComponent implements OnInit {
   public consultant: Consultant = new Consultant();

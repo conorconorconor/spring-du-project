@@ -11,6 +11,7 @@ import {
 import { ConsultantService } from "../services/consultantService";
 import { IConsultant } from "../interfaces/consultant";
 import { Response } from "express";
+import { IComment } from "../interfaces/comment";
 
 @JsonController()
 export class ConsultantsController {
@@ -49,5 +50,13 @@ export class ConsultantsController {
     return {
       message: `Delete consultant with id: ${id}`
     };
+  }
+
+  @Post("/consultants/:id")
+  public addCommentToConsultant(
+    @Param("id") id: string,
+    @Body() comment: IComment
+  ) {
+    return this.consultantService.addComment(id, comment);
   }
 }
