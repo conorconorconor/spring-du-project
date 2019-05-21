@@ -14,13 +14,15 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { ConsultantViewComponent } from "./consultant-view/consultant-view.component";
 import { ConsultantCreateComponent } from "./consultant-create/consultant-create.component";
 import { ConsultantEditComponent } from './consultant-edit/consultant-edit.component';
+import { ConsultantDeleteComponent } from './consultant-delete/consultant-delete.component';
 
 @NgModule({
   declarations: [
     ConsultantComponent,
     ConsultantViewComponent,
     ConsultantCreateComponent,
-    ConsultantEditComponent
+    ConsultantEditComponent,
+    ConsultantDeleteComponent
   ],
   imports: [
     CommonModule,

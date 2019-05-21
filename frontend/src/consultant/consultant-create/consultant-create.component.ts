@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { ConsultantService } from "../consultant.service";
 import { Consultant } from "../consultant";
 import { Router } from "@angular/router";
-import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: "app-consultant-create",

@@ -7,7 +7,15 @@
       <li>{{ consultant.role }}</li>
     </ul>
     <button style="margin: 7px" type="submit" mat-raised-button color="primary">
-      Edit Consultant
+      Edit Consultant</button
+    ><button
+      (ngSubmit)="deleteConsultant()"
+      style="margin: 7px"
+      type="submit"
+      mat-raised-button
+      color="primary"
+    >
+      Delete Consultant
     </button>
   </div>
 </div>

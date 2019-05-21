@@ -7,6 +7,7 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class ConsultantService {
+  consultant: any;
   constructor(private http: HttpClient) {}
 
   getConsultants(): Observable<Consultant[]> {
@@ -18,5 +19,9 @@ export class ConsultantService {
   }
   createConsultant(consultant: Consultant) {
     return this.http.post<Consultant>("/api/consultants", consultant);
+  }
+
+  deleteConsultant(id: string): Observable<{}> {
+    return this.http.delete("/api/consultants/" + id);
   }
 }
