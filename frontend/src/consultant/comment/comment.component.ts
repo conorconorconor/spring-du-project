@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ConsultantComment } from '../comment';
+import { MAT_DIALOG_DATA } from '@angular/material';
+import { Consultant } from '../consultant';
 
 @Component({
   selector: 'app-comment',
@@ -7,15 +9,10 @@ import { ConsultantComment } from '../comment';
   styleUrls: ['./comment.component.css']
 })
 export class CommentComponent implements OnInit {
-  public comment = new ConsultantComment();
+  public comment: ConsultantComment = new ConsultantComment();
 
   constructor() { }
 
   ngOnInit() {
   }
-
-  addComment() {
-
-  }
-
 }
