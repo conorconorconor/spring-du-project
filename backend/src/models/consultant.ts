@@ -1,5 +1,6 @@
 import { Document, Schema, Model, model } from "mongoose";
 import { IConsultant } from "../interfaces/consultant";
+import { CommentSchema } from "./comment";
 
 const ConsultantSchema: Schema = new Schema({
   firstName: {
@@ -19,7 +20,13 @@ const ConsultantSchema: Schema = new Schema({
   },
   title: {
     type: String
-  }
+  },
+  comments: [
+    {
+      ref: "Comment",
+      type: Schema.Types.ObjectId
+    }
+  ]
 });
 
 export const Consultant: Model<IConsultant> = model<IConsultant>(
