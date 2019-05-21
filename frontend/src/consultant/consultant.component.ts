@@ -11,7 +11,13 @@ import { Router } from "@angular/router";
 })
 export class ConsultantComponent implements OnInit {
   public consultants$: Observable<Consultant[]>;
-  public tableHeaders: string[] = ["last name", "first name"];
+  public tableHeaders: string[] = [
+    "last name",
+    "first name",
+    "role",
+    "title",
+    "email"
+  ];
   constructor(
     private consultantService: ConsultantService,
     private router: Router
@@ -29,4 +35,5 @@ export class ConsultantComponent implements OnInit {
     this.router.navigate([`consultants/${consultant._id}`]);
     console.log(consultant);
   }
+
 }

@@ -2,12 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 import { ConsultantRoutingModule } from "./consultant-routing.module";
-import {
-  MatTableModule,
-  MatButtonModule,
-  MatInputModule,
-  MatRadioModule
-} from "@angular/material";
+import { MatTableModule, MatCardModule, MatProgressSpinnerModule, MatButtonModule, MatInputModule, MatRadioModule } from "@angular/material";
 import { ConsultantComponent } from "./consultant.component";
 import { FormsModule, FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -33,6 +28,10 @@ import { ConsultantDeleteComponent } from './consultant-delete/consultant-delete
     ConsultantRoutingModule,
     MatTableModule,
     FormsModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
     ReactiveFormsModule
   ]
 })

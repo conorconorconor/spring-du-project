@@ -7,7 +7,8 @@ import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: "app-consultant-view",
   templateUrl: "./consultant-view.component.html",
-  styleUrls: ["../../shared/styles/consultant-view.scss"]
+
+  styleUrls: ["../../shared/styles/consultant.scss"]
 })
 export class ConsultantViewComponent implements OnInit {
   public consultant$: Observable<Consultant>;

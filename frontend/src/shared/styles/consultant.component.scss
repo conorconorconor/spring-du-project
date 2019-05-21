@@ -7,3 +7,11 @@ table {
     width: 95%;
     margin: 0, 15px;
   }
+
+.consultant-table-row {
+  cursor: pointer;
+}
+
+.consultant-table-row:hover {
+  background-color: #eee;
+}
