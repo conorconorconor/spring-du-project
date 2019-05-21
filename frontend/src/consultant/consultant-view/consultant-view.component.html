@@ -1,5 +1,13 @@
 <div *ngIf="consultant$ | async as consultant">
   <div class="consultant-details">
-    {{ consultant.firstName }}, {{ consultant.lastName }}
+    <h2>{{ consultant.firstName }} {{ consultant.lastName }}</h2>
+    <ul>
+      <li>{{ consultant.email }}</li>
+      <li>{{ consultant.title }}</li>
+      <li>{{ consultant.role }}</li>
+    </ul>
+    <button style="margin: 7px" type="submit" mat-raised-button color="primary">
+      Edit Consultant
+    </button>
   </div>
 </div>
