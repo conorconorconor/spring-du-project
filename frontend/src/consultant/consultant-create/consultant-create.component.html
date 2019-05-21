@@ -4,36 +4,86 @@
   fxLayoutAlign="center center"
   fxLayoutGap="20px"
 >
-  <form class="example-form">
+  <form (ngSubmit)="createConsultant()" #consultantCreateForm="ngForm">
     <table cellspacing="15">
       <tr>
         <td>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="First name" />
+          <mat-form-field>
+            <input
+              [(ngModel)]="consultant.firstName"
+              id="firstName"
+              name="firstName"
+              matInput
+              required
+              placeholder="First name"
+            />
+            <mat-error>
+              This field is required
+            </mat-error>
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Last Name" />
+          <mat-form-field>
+            <input
+              [(ngModel)]="consultant.lastName"
+              id="lastName"
+              name="lastName"
+              matInput
+              required
+              placeholder="Last Name"
+            />
+            <mat-error>
+              This field is required
+            </mat-error>
           </mat-form-field>
         </td>
       </tr>
       <tr>
         <td>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Role" />
+          <mat-form-field>
+            <input
+              [(ngModel)]="consultant.role"
+              id="role"
+              name="role"
+              matInput
+              required
+              placeholder="Role"
+            />
+            <mat-error>
+              This field is required
+            </mat-error>
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Title" />
+          <mat-form-field>
+            <input
+              [(ngModel)]="consultant.title"
+              id="title"
+              name="title"
+              matInput
+              required
+              placeholder="Title"
+            />
+            <mat-error>
+              This field is required
+            </mat-error>
           </mat-form-field>
         </td>
       </tr>
       <tr>
         <td>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Email" />
+          <mat-form-field>
+            <input
+              [(ngModel)]="consultant.email"
+              id="email"
+              name="email"
+              matInput
+              required
+              placeholder="Email"
+            />
+            <mat-error>
+              This field is required
+            </mat-error>
           </mat-form-field>
         </td>
         <td>
@@ -41,7 +91,6 @@
             color="primary"
             mat-raised-button
             style="justify-content: center;"
-            [routerLink]="['/consultants']"
           >
             Create
           </button>
