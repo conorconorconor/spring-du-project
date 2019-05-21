@@ -36,4 +36,5 @@ export class ConsultantComponent implements OnInit {
     console.log(consultant);
   }
 
+
 }
