@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 import { ConsultantRoutingModule } from "./consultant-routing.module";
-import { MatTableModule, MatCardModule, MatProgressSpinnerModule, MatButtonModule, MatInputModule, MatRadioModule } from "@angular/material";
+import { MatTableModule, MatCardModule, MatProgressSpinnerModule, MatButtonModule, MatInputModule, MatRadioModule, MatExpansionPanel, MatDialog, MatDialogModule } from "@angular/material";
 import { ConsultantComponent } from "./consultant.component";
 import { FormsModule, FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -10,6 +10,7 @@ import { ConsultantViewComponent } from "./consultant-view/consultant-view.compo
 import { ConsultantCreateComponent } from "./consultant-create/consultant-create.component";
 import { ConsultantEditComponent } from './consultant-edit/consultant-edit.component';
 import { ConsultantDeleteComponent } from './consultant-delete/consultant-delete.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ConsultantDeleteComponent } from './consultant-delete/consultant-delete
     ConsultantViewComponent,
     ConsultantCreateComponent,
     ConsultantEditComponent,
-    ConsultantDeleteComponent
+    ConsultantDeleteComponent,
+    CommentComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,11 @@ import { ConsultantDeleteComponent } from './consultant-delete/consultant-delete
     MatCardModule,
     MatProgressSpinnerModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    CommentComponent
   ]
 })
 export class ConsultantModule {}

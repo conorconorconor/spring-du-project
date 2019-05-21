@@ -1,3 +1,5 @@
+import { ConsultantComment } from './comment';
+
 export class Consultant {
   _id: string;
   firstName: string;
@@ -5,4 +7,6 @@ export class Consultant {
   role: string;
   email: string;
   title: string;
+  comments: ConsultantComment[];
 }
+
