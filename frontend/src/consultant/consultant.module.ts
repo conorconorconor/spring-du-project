@@ -2,23 +2,33 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 import { ConsultantRoutingModule } from "./consultant-routing.module";
-import { MatTableModule, MatCardModule, MatProgressSpinnerModule, MatButtonModule } from "@angular/material";
+import { MatTableModule, MatCardModule, MatProgressSpinnerModule, MatButtonModule, MatInputModule, MatRadioModule } from "@angular/material";
 import { ConsultantComponent } from "./consultant.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { ConsultantViewComponent } from "./consultant-view/consultant-view.component";
+import { ConsultantCreateComponent } from "./consultant-create/consultant-create.component";
 
 @NgModule({
-  declarations: [ConsultantComponent, ConsultantViewComponent],
+  declarations: [
+    ConsultantComponent,
+    ConsultantViewComponent,
+    ConsultantCreateComponent
+  ],
   imports: [
     CommonModule,
+    MatRadioModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
     ConsultantRoutingModule,
     MatTableModule,
     FormsModule,
     MatFormFieldModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
   ]
 })
 export class ConsultantModule {}

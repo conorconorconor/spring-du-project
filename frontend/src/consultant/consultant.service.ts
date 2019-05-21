@@ -16,4 +16,7 @@ export class ConsultantService {
   getConsultantById(id: string) {
     return this.http.get<Consultant>("/api/consultants/" + id);
   }
+  createConsultant(consultant: Consultant) {
+    return this.http.post<Consultant>("/api/consultants", consultant);
+  }
 }

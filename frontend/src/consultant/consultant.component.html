@@ -5,6 +5,15 @@
   fxLayoutGap="20px"
 >
 <div *ngIf="consultants$ | async as consultants" class="consultant">
+<button
+  color="primary"
+  mat-raised-button
+  style="margin: 2px;"
+  [routerLink]="['/consultants/create']"
+>
+  New Consultant
+</button>
+<div *ngIf="consultants$ | async as consultants">
   <div fxLayout="row" fxLayoutAlign="center">
     <div fxFlex class="user-list" fxLayout="column">
       <table mat-table [dataSource]="consultants" class="mat-elevation-z4">
@@ -23,7 +32,11 @@
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="tableHeaders"></tr>
-        <tr mat-row *matRowDef="let row; columns: tableHeaders" (click)="goToConsultant(row)"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: tableHeaders"
+          (click)="goToConsultant(row)"
+        ></tr>
       </table>
     </div>
   </div>

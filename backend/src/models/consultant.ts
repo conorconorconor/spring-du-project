@@ -1,4 +1,4 @@
-import { Schema, Model, model } from "mongoose";
+import { Document, Schema, Model, model } from "mongoose";
 import { IConsultant } from "../interfaces/consultant";
 
 const ConsultantSchema: Schema = new Schema({
@@ -15,12 +15,10 @@ const ConsultantSchema: Schema = new Schema({
     required: true
   },
   role: {
-    type: String,
-    required: true
+    type: String
   },
   title: {
-    type: String,
-    required: true
+    type: String
   }
 });
 
