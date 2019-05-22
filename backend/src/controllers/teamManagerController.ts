@@ -52,7 +52,6 @@ export class TeamManagerController {
     @Body() credentials: Credentials
   ): Promise<ITeamManager | string> {
     let loginIsValid = await this.tmService.validateLogin(credentials);
-    console.log(loginIsValid);
     if (loginIsValid) {
       return this.tmService.getTeamManager(credentials.username);
     } else {

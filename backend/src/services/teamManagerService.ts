@@ -48,10 +48,9 @@ export class TeamManagerService {
       username: credentials.username,
       password: credentials.password
     });
-    if(tm) {
+    if (tm) {
       isValid = true;
     }
-    console.log("isValid: " + isValid);
     return isValid;
   }
 
