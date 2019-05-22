@@ -26,6 +26,7 @@ export class ConsultantsController {
     return this.consultantService.getConsultants();
   }
 
+  //gets a consultant with all of their comments
   @Get("/consultants/:id")
   public getConsultantById(@Param("id") id: string): Promise<IConsultant> {
     return this.consultantService.getConsultantById(id);
@@ -52,6 +53,7 @@ export class ConsultantsController {
     };
   }
 
+  //adds a comment to a consultant with their id
   @Post("/consultants/:id")
   public addCommentToConsultant(
     @Param("id") id: string,

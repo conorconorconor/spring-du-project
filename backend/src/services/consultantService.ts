@@ -16,8 +16,8 @@ export class ConsultantService {
     return Consultant.find().exec();
   }
 
+  //returns a consultant with all of their comments
   public getConsultantById(id: string): Promise<IConsultant> {
-    let result: IConsultant;
     return Consultant.findById(id)
       .populate("comments")
       .exec();
