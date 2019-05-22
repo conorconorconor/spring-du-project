@@ -28,19 +28,21 @@ export class TeamManagerController {
   //GET: Get a single TM - should include their consultants
   @Get("/users/:id")
   public getTeamManager(@Param("id") id: string) {
-    return this.tmService.getTeamManagerById();
+    return this.tmService.getTeamManagerById(id);
   }
 
   //POST: create a new TM
   @Post("/users")
-  public createTeamManager() {
-    return this.tmService.createTeamManager();
+  public createTeamManager(@Body() tm: ITeamManager) {
+    return this.tmService.createTeamManager(tm);
   }
 
   //DELETE: delete a TM
   @Delete("/users/:id")
   public deleteTeamManager(@Param("id") id: string) {
-    return this.tmService.deleteTeamManager();
+    return {
+      message: `Deleted Tm with id: ${id}`
+    };
   }
 
   //POST: validate login - should return the corresponding TM with their consultants
@@ -59,7 +61,7 @@ export class TeamManagerController {
     @Param("id") consultantId: string,
     @Body() user: ITeamManager
   ) {
-    return "Adds a consultant to this tm";
+    return this.tmService.addConsultant(consultantId, user._id);
   }
 
   //PUT: Removes a consultant from this TM
@@ -68,6 +70,6 @@ export class TeamManagerController {
     @Param("id") consultantId: string,
     @Body() user: ITeamManager
   ) {
-    return "Removes a consultant from this tm";
+    return this.tmService.removeConsultant(consultantId, user._id);
   }
 }
