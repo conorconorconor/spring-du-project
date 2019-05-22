@@ -5,53 +5,53 @@
   fxLayoutGap="20px"
 > -->
 
-<mat-card class="custom" *ngIf="consultant$ | async as consultant">
+<mat-card class="conView" *ngIf="consultant$ | async as consultant">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title
       >{{ consultant.firstName }} {{ consultant.lastName }}</mat-card-title
     >
-    <mat-card-subtitle
-      >{{ consultant.role }} - {{ consultant.title }}</mat-card-subtitle
-    >
-    <mat-card-subtitle>{{ consultant.email }}</mat-card-subtitle>
+    <mat-card-subtitle>Role: {{ consultant.role }}</mat-card-subtitle>
+    <mat-card-subtitle>Title: {{ consultant.title }}</mat-card-subtitle>
+    <mat-card-subtitle>e-Mail: {{ consultant.email }}</mat-card-subtitle>
   </mat-card-header>
-  <img
-    style="max-width: 25%;"
-    mat-card-image
-    src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-    alt="Photo of a Shiba Inu"
-  />
   <mat-card-content>
-    <p>
+    <!-- <p>
       {{ consultant.firstName }} {{ consultant.lastName }} is the smallest of
       the six original and distinct spitz breeds of dog from Japan. A small,
       agile dog that copes very well with mountainous terrain, the Shiba Inu was
       originally bred for hunting.
-    </p>
-    <h2>Comments</h2>
-    <ul>
-      <li *ngFor="let comment of consultant.comments">{{ comment.text }}</li>
-    </ul>
+    </p> -->
+    <!-- <mat-card> -->
+
+    <mat-card-title>Comments</mat-card-title>
+    <div class="scroll">
+      <mat-list role="list">
+        <mat-list-item *ngFor="let comment of consultant.comments">{{
+          comment.text
+        }}</mat-list-item>
+      </mat-list>
+    </div>
+
+    <!-- </mat-card> -->
+    <mat-card-actions class="center">
+      <button style="margin: 7px" mat-raised-button (click)="addComment()">
+        Add Comment
+      </button>
+      <button style="margin: 7px" mat-raised-button>Remove From Team</button>
+      <button style="margin: 7px" type="submit" mat-raised-button>
+        Edit Consultant
+      </button>
+      <button
+        style="margin: 7px"
+        (click)="deleteConsultant(consultant._id)"
+        type="submit"
+        mat-raised-button
+        color="warn"
+      >
+        Delete Consultant
+      </button>
+    </mat-card-actions>
   </mat-card-content>
-  <mat-card-actions>
-    <button style="margin: 7px" mat-raised-button (click)="addComment()">
-      Add Comment
-    </button>
-    <button style="margin: 7px" mat-raised-button>Remove From Team</button>
-    <button style="margin: 7px" type="submit" mat-raised-button>
-      Edit Consultant
-    </button>
-    <button
-      style="margin: 7px"
-      (click)="deleteConsultant(consultant._id)"
-      type="submit"
-      mat-raised-button
-      color="warn"
-    >
-      Delete Consultant
-    </button>
-  </mat-card-actions>
 </mat-card>
 
 <!-- <div *ngIf="consultant$ | async as consultant">
