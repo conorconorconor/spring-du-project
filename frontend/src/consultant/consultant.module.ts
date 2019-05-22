@@ -14,12 +14,13 @@ import {
   MatDialogModule
 } from "@angular/material";
 import { ConsultantComponent } from "./consultant.component";
-import { FormsModule, FormControl, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { ConsultantViewComponent } from "./consultant-view/consultant-view.component";
 import { ConsultantCreateComponent } from "./consultant-create/consultant-create.component";
 import { ConsultantEditComponent } from "./consultant-edit/consultant-edit.component";
 import { CommentComponent } from "./comment/comment.component";
+import { DeleteComponent } from "./delete/delete.component";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CommentComponent } from "./comment/comment.component";
     ConsultantViewComponent,
     ConsultantCreateComponent,
     ConsultantEditComponent,
+    DeleteComponent,
     CommentComponent
   ],
   imports: [
@@ -45,6 +47,6 @@ import { CommentComponent } from "./comment/comment.component";
     ReactiveFormsModule,
     MatDialogModule
   ],
-  entryComponents: [CommentComponent]
+  entryComponents: [CommentComponent, DeleteComponent]
 })
 export class ConsultantModule {}
