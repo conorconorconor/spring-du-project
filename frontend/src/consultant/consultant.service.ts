@@ -22,8 +22,8 @@ export class ConsultantService {
     return this.http.post<Consultant>("/api/consultants", consultant);
   }
 
-  deleteConsultant(id: string): Observable<{}> {
-    return this.http.delete("/api/consultants/" + id);
+  deleteConsultant(id: string): Observable<Consultant> {
+    return this.http.delete<Consultant>("/api/consultants/" + id);
   }
 
   addComment(id: string, comment: ConsultantComment): Observable<Consultant> {

@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { Consultant } from "../consultant";
 import { ConsultantService } from "../consultant.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { MatDialog } from "@angular/material";
 import { CommentComponent } from "../comment/comment.component";
 import { ConsultantComment } from "../comment";
@@ -18,6 +18,7 @@ export class ConsultantViewComponent implements OnInit {
   private id: string = this.route.snapshot.paramMap.get("id");
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private consultantService: ConsultantService,
     public dialog: MatDialog
@@ -33,6 +34,11 @@ export class ConsultantViewComponent implements OnInit {
 
   updateConsultant() {
     this.consultant$ = this.consultantService.getConsultantById(this.id);
+  }
+  public deleteConsultant(id: string): void {
+    this.consultantService.deleteConsultant(id).subscribe(() => {
+      this.router.navigate(["/consultants"]);
+    });
   }
 
   addComment(): void {

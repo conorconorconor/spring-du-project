@@ -2,15 +2,24 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 import { ConsultantRoutingModule } from "./consultant-routing.module";
-import { MatTableModule, MatCardModule, MatProgressSpinnerModule, MatButtonModule, MatInputModule, MatRadioModule, MatExpansionPanel, MatDialog, MatDialogModule } from "@angular/material";
+import {
+  MatTableModule,
+  MatCardModule,
+  MatProgressSpinnerModule,
+  MatButtonModule,
+  MatInputModule,
+  MatRadioModule,
+  MatExpansionPanel,
+  MatDialog,
+  MatDialogModule
+} from "@angular/material";
 import { ConsultantComponent } from "./consultant.component";
 import { FormsModule, FormControl, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { ConsultantViewComponent } from "./consultant-view/consultant-view.component";
 import { ConsultantCreateComponent } from "./consultant-create/consultant-create.component";
-import { ConsultantEditComponent } from './consultant-edit/consultant-edit.component';
-import { ConsultantDeleteComponent } from './consultant-delete/consultant-delete.component';
-import { CommentComponent } from './comment/comment.component';
+import { ConsultantEditComponent } from "./consultant-edit/consultant-edit.component";
+import { CommentComponent } from "./comment/comment.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +27,6 @@ import { CommentComponent } from './comment/comment.component';
     ConsultantViewComponent,
     ConsultantCreateComponent,
     ConsultantEditComponent,
-    ConsultantDeleteComponent,
     CommentComponent
   ],
   imports: [
@@ -37,8 +45,6 @@ import { CommentComponent } from './comment/comment.component';
     ReactiveFormsModule,
     MatDialogModule
   ],
-  entryComponents: [
-    CommentComponent
-  ]
+  entryComponents: [CommentComponent]
 })
 export class ConsultantModule {}
