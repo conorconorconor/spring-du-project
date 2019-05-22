@@ -16,7 +16,8 @@ export class ConsultantComponent implements OnInit {
     "first name",
     "role",
     "title",
-    "email"
+    "email",
+    "addToTeam"
   ];
   constructor(
     private consultantService: ConsultantService,
