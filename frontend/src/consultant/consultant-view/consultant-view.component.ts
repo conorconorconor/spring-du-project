@@ -11,7 +11,7 @@ import { DeleteComponent } from "../delete/delete.component";
 @Component({
   selector: "app-consultant-view",
   templateUrl: "./consultant-view.component.html",
-  styleUrls: ["../../shared/styles/consultant-view.scss"]
+  styleUrls: ["../../shared/styles/comment.scss"]
 })
 export class ConsultantViewComponent implements OnInit {
   public consultant$: Observable<Consultant>;
@@ -50,7 +50,8 @@ export class ConsultantViewComponent implements OnInit {
 
   addComment(): void {
     let dialog = this.dialog.open(CommentComponent, {
-      width: "500px"
+      width: "500px",
+      height: "400px"
     });
     dialog.afterClosed().subscribe((result: ConsultantComment) => {
       console.log(result);
@@ -59,5 +60,5 @@ export class ConsultantViewComponent implements OnInit {
     });
   }
 
-  
+
 }
