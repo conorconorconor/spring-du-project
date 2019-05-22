@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { MatDialog } from "@angular/material";
 import { CommentComponent } from "../comment/comment.component";
 import { ConsultantComment } from "../comment";
+import { DeleteComponent } from "../delete/delete.component";
 
 @Component({
   selector: "app-consultant-view",
@@ -16,6 +17,7 @@ import { ConsultantComment } from "../comment";
 export class ConsultantViewComponent implements OnInit {
   public consultant$: Observable<Consultant>;
   private id: string = this.route.snapshot.paramMap.get("id");
+  public delete: boolean = false;
 
   constructor(
     private router: Router,
@@ -35,9 +37,21 @@ export class ConsultantViewComponent implements OnInit {
   updateConsultant() {
     this.consultant$ = this.consultantService.getConsultantById(this.id);
   }
-  public deleteConsultant(id: string): void {
-    this.consultantService.deleteConsultant(id).subscribe(() => {
-      this.router.navigate(["/consultants"]);
+
+  // public deleteConsultant(id: string): void {
+  //   this.consultantService.deleteConsultant(id).subscribe(() => {
+  //     this.router.navigate(["/consultants"]);
+  //   });
+  // }
+
+  deleteConsultant(id: string): void {
+    let dialog = this.dialog.open(DeleteComponent);
+    dialog.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result) {
+        this.consultantService.deleteConsultant(id).subscribe();
+        this.router.navigate(["/consultants"]);
+      }
     });
   }
 
