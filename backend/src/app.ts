@@ -5,6 +5,7 @@ import { useContainer, useExpressServer } from "routing-controllers";
 import * as bodyParser from "body-parser";
 import { ConsultantsController } from "./controllers/consultantsController";
 import * as mongoose from "mongoose";
+import { TeamManagerController } from "./controllers/teamManagerController";
 
 export class App {
   public express: express.Application;
@@ -16,7 +17,7 @@ export class App {
     this.connectToDB();
     this.middleWare();
     useExpressServer(this.express, {
-      controllers: [ConsultantsController],
+      controllers: [ConsultantsController, TeamManagerController],
       classTransformer: false
     });
   }
