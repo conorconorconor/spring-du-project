@@ -61,7 +61,8 @@ export class ConsultantViewComponent implements OnInit {
     });
     dialog.afterClosed().subscribe((result: ConsultantComment) => {
       console.log(result);
-      this.consultant$ = this.consultantService.addComment(this.id, result);
+      if (result.text)
+        this.consultant$ = this.consultantService.addComment(this.id, result);
     });
   }
 }
