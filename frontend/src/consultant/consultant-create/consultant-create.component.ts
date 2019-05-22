@@ -22,7 +22,7 @@ export class ConsultantCreateComponent implements OnInit {
     this.consultantService
       .createConsultant(this.consultant)
       .subscribe(consultant => {
-        this.router.navigate([`consultant/${consultant._id}`]);
+        this.router.navigate([`consultants/${consultant._id}`]);
       });
   }
 }
