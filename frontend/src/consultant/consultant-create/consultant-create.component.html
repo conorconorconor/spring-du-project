@@ -88,7 +88,11 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button color="primary" [mat-dialog-close]="consultant">
+  <button
+    mat-button
+    color="primary"
+    (click)="verifyCreate(consultantCreateForm)"
+  >
     Create
   </button>
 </mat-dialog-actions>
