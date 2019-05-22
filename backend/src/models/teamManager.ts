@@ -1,9 +1,10 @@
-import { Model, Schema } from "mongoose";
+import { Model, Schema, model } from "mongoose";
+import { ITeamManager } from "../interfaces/teamManager";
 
 const TeamManagerSchema: Schema = new Schema({
   firstName: {
     type: String,
-    required: true,
+    required: true
   },
   lastName: {
     type: String,
@@ -14,11 +15,17 @@ const TeamManagerSchema: Schema = new Schema({
     required: true
   },
   password: {
-    type: String,
+    type: String
   },
-  consultants: [{
-    type: Schema.Types.ObjectId,
-    ref: "Consultant"
-  }]
+  consultants: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Consultant"
+    }
+  ]
 });
 
+export const TeamManager: Model<ITeamManager> = model<ITeamManager>(
+  "TeamManager",
+  TeamManagerSchema
+);

@@ -19,7 +19,7 @@ export class TeamManagerController {
   }
 
   //not sure what the routes should be called
-  //GET: get all the TM's - maybe without their TM's
+  //GET: get all the TM's - maybe without their consultants
   @Get("/users")
   public getTeamManagers() {
     return this.tmService.getTeamManagers();
