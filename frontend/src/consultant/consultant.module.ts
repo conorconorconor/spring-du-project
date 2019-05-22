@@ -47,6 +47,10 @@ import { DeleteComponent } from "./delete/delete.component";
     ReactiveFormsModule,
     MatDialogModule
   ],
-  entryComponents: [CommentComponent, DeleteComponent]
+  entryComponents: [
+    CommentComponent,
+    DeleteComponent,
+    ConsultantCreateComponent
+  ]
 })
 export class ConsultantModule {}

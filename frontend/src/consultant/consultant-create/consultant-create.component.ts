@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ConsultantService } from "../consultant.service";
 import { Consultant } from "../consultant";
 import { Router } from "@angular/router";
+import { MatDialogRef, MatDialog } from "@angular/material";
 
 @Component({
   selector: "app-consultant-create",
@@ -13,16 +14,10 @@ export class ConsultantCreateComponent implements OnInit {
 
   constructor(
     private consultantService: ConsultantService,
-    private router: Router
+    private router: Router,
+    public dialogRef: MatDialogRef<ConsultantCreateComponent>,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {}
-
-  public createConsultant(): void {
-    this.consultantService
-      .createConsultant(this.consultant)
-      .subscribe(consultant => {
-        this.router.navigate([`consultants/${consultant._id}`]);
-      });
-  }
 }
