@@ -1,9 +1,5 @@
-<div
-  style="text-align: center;"
-  fxLayout="column"
-  fxLayoutAlign="center center"
-  fxLayoutGap="20px"
->
+<h2 mat-dialog-title>Create Consultant</h2>
+<mat-dialog-content>
   <form (ngSubmit)="createConsultant()" #consultantCreateForm="ngForm">
     <table cellspacing="15">
       <tr>
@@ -86,16 +82,13 @@
             </mat-error>
           </mat-form-field>
         </td>
-        <td>
-          <button
-            color="primary"
-            mat-raised-button
-            style="justify-content: center;"
-          >
-            Create
-          </button>
-        </td>
       </tr>
     </table>
   </form>
-</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button color="primary" [mat-dialog-close]="consultant">
+    Create
+  </button>
+</mat-dialog-actions>

@@ -3,6 +3,8 @@ import { ConsultantService } from "./consultant.service";
 import { Consultant } from "./consultant";
 import { Observable } from "rxjs";
 import { Router } from "@angular/router";
+import { ConsultantCreateComponent } from "./consultant-create/consultant-create.component";
+import { MatDialog } from "@angular/material";
 
 @Component({
   selector: "app-consultant",
@@ -10,6 +12,7 @@ import { Router } from "@angular/router";
   styleUrls: ["../shared/styles/consultant.component.scss"]
 })
 export class ConsultantComponent implements OnInit {
+  public consultant: Consultant = new Consultant();
   public consultants$: Observable<Consultant[]>;
   public tableHeaders: string[] = [
     "last name",
@@ -21,7 +24,8 @@ export class ConsultantComponent implements OnInit {
   ];
   constructor(
     private consultantService: ConsultantService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -37,5 +41,17 @@ export class ConsultantComponent implements OnInit {
     console.log(consultant);
   }
 
-
+  public createConsultant(): void {
+    let dialog = this.dialog.open(ConsultantCreateComponent);
+    dialog.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result) {
+        this.consultantService
+          .createConsultant(result)
+          .subscribe(consultant => {
+            this.router.navigate([`consultants/${consultant._id}`]);
+          });
+      }
+    });
+  }
 }
