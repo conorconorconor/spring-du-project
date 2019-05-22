@@ -3,6 +3,7 @@ import { ITeamManager } from "../interfaces/teamManager";
 import { TeamManager } from "../models/teamManager";
 import { IConsultant } from "../interfaces/consultant";
 import { Consultant } from "../models/consultant";
+import { Credentials } from "../models/credentials";
 
 @Service()
 export class TeamManagerService {
@@ -28,15 +29,30 @@ export class TeamManagerService {
       .exec();
   }
 
+  public getTeamManager(username?: string) {
+    return TeamManager.findOne({ username }).exec();
+  }
+
   //may not actually need this
   public getTeamManagers() {
-    return TeamManager.find().exec();
+    return TeamManager.find()
+      .populate("consultants")
+      .exec();
   }
 
   //login a TM
-  public validateTeamManager(): boolean {
+  public async validateLogin(credentials: Credentials): Promise<boolean> {
     // return "Validate credentials for login";
-    return true;
+    let isValid = false;
+    let tm = await TeamManager.findOne({
+      username: credentials.username,
+      password: credentials.password
+    });
+    if(tm) {
+      isValid = true;
+    }
+    console.log("isValid: " + isValid);
+    return isValid;
   }
 
   //add a consultant to a TM
