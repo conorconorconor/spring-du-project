@@ -12,7 +12,6 @@ import { MatSnackBar } from "@angular/material";
 })
 export class HomeComponent {
   public loggedInUser: User;
-  // TODO: Bind username and password to inputs
   public credentials: Credentials = new Credentials();
 
   constructor(
@@ -34,7 +33,6 @@ export class HomeComponent {
             duration: 3000
           });
         });
-      //route to this user's consultants page
     }
   }
 }

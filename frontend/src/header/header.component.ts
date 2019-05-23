@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { AuthService } from 'src/services/auth.service';
+import { AuthService } from "src/services/auth.service";
 
 @Component({
   selector: "app-header",
@@ -7,11 +7,14 @@ import { AuthService } from 'src/services/auth.service';
   styleUrls: ["../shared/styles/header.scss"]
 })
 export class HeaderComponent {
-  constructor(private authService: AuthService) {
-
-  }
+  constructor(private authService: AuthService) {}
 
   public logout() {
     this.authService.logout();
+  }
+
+  public checkLogin() {
+    if (this.authService.getUserFromLocalStorage()) return true;
+    else return false;
   }
 }
