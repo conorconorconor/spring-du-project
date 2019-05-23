@@ -47,7 +47,7 @@ export class UserService {
         {}
       );
     }
-  constructor(private http: HttpClient) {}
+  }
 
   createUser(user: User) {
     return this.http.post<User>("/api/users", user);
