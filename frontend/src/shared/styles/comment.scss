@@ -3,22 +3,27 @@
 }
 
 .conView.mat-card {
-    display: block;
-    position: relative;
-    margin: 50px;
-    padding: relative;
-    border-radius: 4px;
-    //   text-align: center;
-  }
-  
-  .center {
-    margin: auto;
-    text-align: center;
-    padding: 10px;
-  }
-  
-  .scroll {
-    overflow: scroll;
-    height: 250px;
-  }
-  
+  display: block;
+  position: relative;
+  margin: 50px;
+  padding: relative;
+  border-radius: 4px;
+  //   text-align: center;
+}
+
+.center {
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+}
+
+.scroll {
+  overflow: scroll;
+  height: 250px;
+}
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");

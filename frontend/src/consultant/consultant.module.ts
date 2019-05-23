@@ -23,7 +23,8 @@ import { ConsultantCreateComponent } from "./consultant-create/consultant-create
 import { ConsultantEditComponent } from "./consultant-edit/consultant-edit.component";
 import { CommentComponent } from "./comment/comment.component";
 import { DeleteComponent } from "./delete/delete.component";
-import { ScrollDispatchModule } from '@angular/cdk/scrolling';
+import { ScrollDispatchModule } from "@angular/cdk/scrolling";
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -51,8 +52,8 @@ import { ScrollDispatchModule } from '@angular/cdk/scrolling';
     MatDialogModule,
     MatListModule,
     ScrollDispatchModule,
+    MatIconModule,
     MatPaginatorModule
-
   ],
   entryComponents: [
     CommentComponent,

@@ -1,3 +1,4 @@
 export class ConsultantComment {
-    text: string;
+  text: string;
+  publishDate: Date;
 }

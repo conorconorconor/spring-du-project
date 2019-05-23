@@ -26,7 +26,7 @@ import { LocalStorageService } from 'src/services/localStorage.service';
     GanonModule,
     FlexLayoutModule,
     HomeModule,
-    UserModule,
+    UserModule
   ],
   providers: [AuthService, LocalStorageService],
   bootstrap: [AppComponent]

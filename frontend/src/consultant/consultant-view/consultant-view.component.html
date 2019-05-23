@@ -1,7 +1,8 @@
 <mat-card class="conView" *ngIf="consultant$ | async as consultant">
   <mat-card-header>
     <mat-card-title
-      >{{ consultant.firstName }} {{ consultant.lastName }}</mat-card-title
+      ><mat-icon mat-list-icon>person</mat-icon>{{ consultant.firstName }}
+      {{ consultant.lastName }}</mat-card-title
     >
     <mat-card-subtitle>Role: {{ consultant.role }}</mat-card-subtitle>
     <mat-card-subtitle>Title: {{ consultant.title }}</mat-card-subtitle>
@@ -11,9 +12,13 @@
     <mat-card-title>Comments</mat-card-title>
     <div class="scroll">
       <mat-list role="list">
-        <mat-list-item *ngFor="let comment of consultant.comments">{{
-          comment.text
-        }}</mat-list-item>
+        <mat-list-item *ngFor="let comment of consultant.comments"
+          ><mat-icon mat-list-icon class="material-icons.md-18"
+            >comment</mat-icon
+          >
+          <h4 mat-line>{{ comment.text }}</h4>
+          <p mat-line>{{ comment.publishDate | date: "shortDate" }}</p>
+        </mat-list-item>
       </mat-list>
     </div>
 
