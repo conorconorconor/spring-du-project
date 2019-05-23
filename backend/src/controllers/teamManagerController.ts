@@ -9,6 +9,7 @@ import {
 } from "routing-controllers";
 import { TeamManagerService } from "../services/teamManagerService";
 import { ITeamManager } from "../interfaces/teamManager";
+import { Credentials } from "../models/credentials";
 
 @JsonController()
 export class TeamManagerController {
@@ -47,11 +48,14 @@ export class TeamManagerController {
 
   //POST: validate login - should return the corresponding TM with their consultants
   @Post("/users/login")
-  public login() {
-    if (this.tmService.validateTeamManager()) {
-      return "Valid Login";
+  public async login(
+    @Body() credentials: Credentials
+  ): Promise<ITeamManager | string> {
+    let loginIsValid = await this.tmService.validateLogin(credentials);
+    if (loginIsValid) {
+      return this.tmService.getTeamManager(credentials.username);
     } else {
-      return "Not Valid";
+      return "Not a valid login";
     }
   }
 
