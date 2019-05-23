@@ -11,7 +11,9 @@ import {
   MatRadioModule,
   MatExpansionPanel,
   MatDialog,
-  MatDialogModule, MatPaginatorModule, MatSortModule
+  MatDialogModule,
+  MatListModule,
+  MatPaginatorModule
 } from "@angular/material";
 import { ConsultantComponent } from "./consultant.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -21,6 +23,8 @@ import { ConsultantCreateComponent } from "./consultant-create/consultant-create
 import { ConsultantEditComponent } from "./consultant-edit/consultant-edit.component";
 import { CommentComponent } from "./comment/comment.component";
 import { DeleteComponent } from "./delete/delete.component";
+import { ScrollDispatchModule } from "@angular/cdk/scrolling";
+import { MatIconModule } from "@angular/material/icon";
 import { ConsultantTableComponent } from './consultant-table/consultant-table.component';
 
 @NgModule({
@@ -48,13 +52,18 @@ import { ConsultantTableComponent } from './consultant-table/consultant-table.co
     MatButtonModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatPaginatorModule,
-    MatSortModule
+    MatListModule,
+    ScrollDispatchModule,
+    MatIconModule,
+    MatPaginatorModule
   ],
   entryComponents: [
     CommentComponent,
     DeleteComponent,
     ConsultantCreateComponent
+  ],
+  exports: [
+    ConsultantComponent
   ]
 })
 export class ConsultantModule {}

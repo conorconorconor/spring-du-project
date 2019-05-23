@@ -11,8 +11,7 @@ import { DeleteComponent } from "../delete/delete.component";
 @Component({
   selector: "app-consultant-view",
   templateUrl: "./consultant-view.component.html",
-
-  styleUrls: ["../../shared/styles/consultant.scss"]
+  styleUrls: ["../../shared/styles/comment.scss"]
 })
 export class ConsultantViewComponent implements OnInit {
   public consultant$: Observable<Consultant>;
@@ -38,12 +37,6 @@ export class ConsultantViewComponent implements OnInit {
     this.consultant$ = this.consultantService.getConsultantById(this.id);
   }
 
-  // public deleteConsultant(id: string): void {
-  //   this.consultantService.deleteConsultant(id).subscribe(() => {
-  //     this.router.navigate(["/consultants"]);
-  //   });
-  // }
-
   deleteConsultant(id: string): void {
     let dialog = this.dialog.open(DeleteComponent);
     dialog.afterClosed().subscribe(result => {
@@ -57,12 +50,14 @@ export class ConsultantViewComponent implements OnInit {
 
   addComment(): void {
     let dialog = this.dialog.open(CommentComponent, {
-      width: "500px"
+      width: "500px",
+      height: "400px"
     });
     dialog.afterClosed().subscribe((result: ConsultantComment) => {
       console.log(result);
-      if (result.text)
+      if (result.text) {
         this.consultant$ = this.consultantService.addComment(this.id, result);
+      }
     });
   }
 }

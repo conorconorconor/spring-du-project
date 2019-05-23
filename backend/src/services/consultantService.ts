@@ -44,11 +44,10 @@ export class ConsultantService {
     await newComment.save((err, _) => {
       if (err) throw new Error("Not a valid comment?");
     });
-    await Consultant.findById(id, (err, result) => {
+    consultant = await Consultant.findById(id, (err, result) => {
       if (err) {
         throw new Error("Consultant not found");
       }
-      consultant = result;
     }).exec();
     consultant.comments.push(newComment._id);
     await consultant.save();

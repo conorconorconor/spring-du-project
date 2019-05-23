@@ -3,6 +3,7 @@ import { ConsultantService } from "../consultant.service";
 import { Consultant } from "../consultant";
 import { Router } from "@angular/router";
 import { MatDialogRef, MatDialog } from "@angular/material";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-consultant-create",
@@ -19,5 +20,10 @@ export class ConsultantCreateComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
+  public verifyCreate(form: NgForm) {
+    if (form.valid) {
+      this.dialogRef.close(this.consultant);
+    }
+  }
   ngOnInit() {}
 }

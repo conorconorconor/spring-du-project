@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { User } from "../app/models/user";
 import { Credentials } from "../app/models/credentials";
 import { Router } from "@angular/router";
+import { AuthService } from "src/services/auth.service";
+import { MatSnackBar } from "@angular/material";
 
 @Component({
   selector: "app-home",
@@ -10,23 +12,27 @@ import { Router } from "@angular/router";
 })
 export class HomeComponent {
   public loggedInUser: User;
-  // TODO: Bind username and password to inputs
   public credentials: Credentials = new Credentials();
 
-  constructor(public router: Router) {}
+  constructor(
+    public router: Router,
+    private authService: AuthService,
+    private snackBar: MatSnackBar
+  ) {}
 
   // TODO: Bind login to button
-  public login(): void {
-    // TODO: Validate inputs are defined
+  public async login(): Promise<void> {
     if (this.credentials.username && this.credentials.password) {
-      let newUser = new User();
-      newUser.username = this.credentials.username;
-      this.loggedInUser = newUser;
-      this.router.navigate(["consultants"]);
-    } else {
-      const msg = "you need to put something in both fields";
-      console.log(msg);
+      await this.authService
+        .login(this.credentials)
+        .then(() => {
+          this.router.navigate(["consultants"]);
+        })
+        .catch(err => {
+          this.snackBar.open("Invalid Login", "", {
+            duration: 3000
+          });
+        });
     }
-    // TODO: If valid, assign a new User object (with username) to loggedInUser
   }
 }

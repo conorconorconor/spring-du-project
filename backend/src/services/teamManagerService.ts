@@ -3,6 +3,7 @@ import { ITeamManager } from "../interfaces/teamManager";
 import { TeamManager } from "../models/teamManager";
 import { IConsultant } from "../interfaces/consultant";
 import { Consultant } from "../models/consultant";
+import { Credentials } from "../models/credentials";
 
 @Service()
 export class TeamManagerService {
@@ -28,15 +29,29 @@ export class TeamManagerService {
       .exec();
   }
 
+  public getTeamManager(username?: string) {
+    return TeamManager.findOne({ username }).exec();
+  }
+
   //may not actually need this
   public getTeamManagers() {
-    return TeamManager.find().exec();
+    return TeamManager.find()
+      .populate("consultants")
+      .exec();
   }
 
   //login a TM
-  public validateTeamManager(): boolean {
+  public async validateLogin(credentials: Credentials): Promise<boolean> {
     // return "Validate credentials for login";
-    return true;
+    let isValid = false;
+    let tm = await TeamManager.findOne({
+      username: credentials.username,
+      password: credentials.password
+    });
+    if (tm) {
+      isValid = true;
+    }
+    return isValid;
   }
 
   //add a consultant to a TM
@@ -44,16 +59,19 @@ export class TeamManagerService {
     // return "Add a consultant to this TM";
     let tm: ITeamManager;
     let newConsultant: IConsultant;
-    await Consultant.findById(consultantId, (err, result) => {
-      if (err) {
-        throw new Error("Consultant not found");
-      }
-      newConsultant = result;
-    });
-    tm = await this.getTeamManagerById(tmId);
-    tm.consultants.push(newConsultant._id);
-    await tm.save();
-    return tm;
+    if (this.onTeam(tm, consultantId) !== -1) {
+      newConsultant = await Consultant.findById(consultantId, (err, result) => {
+        if (err) {
+          throw new Error("Consultant not found");
+        }
+      }).exec();
+      tm = await this.getTeamManagerById(tmId);
+      tm.consultants.push(newConsultant._id);
+      await tm.save();
+      return tm;
+    } else {
+      throw new Error("Consultant is already on team");
+    }
   }
 
   //remove a consultant from a TM
@@ -61,15 +79,21 @@ export class TeamManagerService {
     // return "Remove a consultant from this TM";
     let tm: ITeamManager;
     tm = await this.getTeamManagerById(tmId);
-    let idx: number = tm.consultants.findIndex(el => {
-      return el._id == consultantId;
-    });
+    let idx: number = this.onTeam(tm, consultantId);
     if (idx === -1) {
       throw new Error("Seems this consultant isn't on this team");
+    } else {
+      tm.consultants.splice(idx, 1);
+      await tm.save();
+      return tm;
     }
-    tm.consultants.splice(idx, 1);
-    await tm.save();
-    return tm;
+  }
+
+  public getTmConsultants(id: string): Promise<IConsultant[]> {
+    return this.getTeamManagerById(id).then(result => {
+      console.log(result.consultants);
+      return result.consultants;
+    });
   }
 
   private async usernameExists(username: string) {
@@ -83,5 +107,12 @@ export class TeamManagerService {
     });
 
     return exists;
+  }
+
+  private onTeam(tm: ITeamManager, consultantId: string): number {
+    let idx: number = tm.consultants.findIndex(el => {
+      return el._id == consultantId;
+    });
+    return idx;
   }
 }

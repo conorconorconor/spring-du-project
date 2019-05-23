@@ -5,10 +5,13 @@ import {
   Delete,
   Param,
   Put,
-  Body
+  Body,
+  QueryParam
 } from "routing-controllers";
 import { TeamManagerService } from "../services/teamManagerService";
 import { ITeamManager } from "../interfaces/teamManager";
+import { Credentials } from "../models/credentials";
+import { IConsultant } from "../interfaces/consultant";
 
 @JsonController()
 export class TeamManagerController {
@@ -27,9 +30,26 @@ export class TeamManagerController {
 
   //GET: Get a single TM - should include their consultants
   @Get("/users/:id")
-  public getTeamManager(@Param("id") id: string) {
-    return this.tmService.getTeamManagerById(id);
+  public getTeamManager(
+    @Param("id") id: string,
+    @QueryParam("getConsultants") getConsultants: boolean = false
+  ): Promise<IConsultant[]> | Promise<ITeamManager> {
+    if (getConsultants) {
+      return this.tmService.getTmConsultants(id);
+    } else {
+      return this.tmService.getTeamManagerById(id);
+    }
   }
+
+  // @Get("/users/:id")
+  // public getTmConsultants(
+  //   @Param("id") id: string,
+  //   @QueryParam("consultants") getConsultants: boolean
+  // ): Promise<IConsultant[]> {
+  //   if (getConsultants) {
+  //     return this.tmService.getTmConsultants(id);
+  //   }
+  // }
 
   //POST: create a new TM
   @Post("/users")
@@ -47,29 +67,32 @@ export class TeamManagerController {
 
   //POST: validate login - should return the corresponding TM with their consultants
   @Post("/users/login")
-  public login() {
-    if (this.tmService.validateTeamManager()) {
-      return "Valid Login";
+  public async login(
+    @Body() credentials: Credentials
+  ): Promise<ITeamManager | string> {
+    let loginIsValid = await this.tmService.validateLogin(credentials);
+    if (loginIsValid) {
+      return this.tmService.getTeamManager(credentials.username);
     } else {
-      return "Not Valid";
+      throw new Error("Not a valid login");
     }
   }
 
   //PUT: Adds a consultant to this TM
   @Put("/users/add/:id")
   public addConsultant(
-    @Param("id") consultantId: string,
-    @Body() user: ITeamManager
+    @Param("id") id: string,
+    @QueryParam("consultantId") consultantId: string
   ) {
-    return this.tmService.addConsultant(consultantId, user._id);
+    return this.tmService.addConsultant(consultantId, id);
   }
 
   //PUT: Removes a consultant from this TM
   @Put("/users/remove/:id")
   public removeConsultant(
-    @Param("id") consultantId: string,
-    @Body() user: ITeamManager
+    @Param("id") id: string,
+    @QueryParam("consultantId") consultantId: string
   ) {
-    return this.tmService.removeConsultant(consultantId, user._id);
+    return this.tmService.removeConsultant(consultantId, id);
   }
 }
