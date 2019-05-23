@@ -10,6 +10,9 @@ import { AppRouting } from "./app.routing";
 import { ConsultantModule } from "../consultant/consultant.module";
 import { HomeModule } from "../home/home.module";
 import { GanonModule } from "../ganon/ganon.module";
+import { UserModule } from '../user/user.module';
+import { AuthService } from 'src/services/auth.service';
+import { LocalStorageService } from 'src/services/localStorage.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,9 +25,10 @@ import { GanonModule } from "../ganon/ganon.module";
     ConsultantModule,
     GanonModule,
     FlexLayoutModule,
-    HomeModule
+    HomeModule,
+    UserModule
   ],
-  providers: [],
+  providers: [AuthService, LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
