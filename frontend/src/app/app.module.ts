@@ -13,6 +13,7 @@ import { GanonModule } from "../ganon/ganon.module";
 import { UserModule } from '../user/user.module';
 import { AuthService } from 'src/services/auth.service';
 import { LocalStorageService } from 'src/services/localStorage.service';
+import { ConsultantComponent } from 'src/consultant/consultant.component';
 
 @NgModule({
   declarations: [AppComponent],

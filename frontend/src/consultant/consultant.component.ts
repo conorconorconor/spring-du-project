@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { ConsultantService } from "./consultant.service";
 import { Consultant } from "./consultant";
 import { Observable, Subscription } from "rxjs";
@@ -24,6 +24,8 @@ export class ConsultantComponent implements OnInit {
     "addToTeam"
   ];
   public loggedInUserSub: Subscription;
+  @Input() tmConsultants: Consultant[];
+
   constructor(
     private consultantService: ConsultantService,
     private router: Router,

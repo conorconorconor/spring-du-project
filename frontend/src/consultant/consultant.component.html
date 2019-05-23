@@ -1,5 +1,8 @@
 <div *ngIf="consultants$ | async as consultants" class="consultant">
-  <mat-table [dataSource]="consultants" class="mat-elevation-z4">
+  <mat-table
+    [dataSource]="consultants"
+    class="mat-elevation-z4"
+  >
     <!-- Last Name Column -->
     <ng-container matColumnDef="last name">
       <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
@@ -59,7 +62,6 @@
     ></mat-row>
   </mat-table>
   <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
-  
 </div>
 
 <button

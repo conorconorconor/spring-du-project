@@ -59,6 +59,9 @@ import { MatIconModule } from "@angular/material/icon";
     CommentComponent,
     DeleteComponent,
     ConsultantCreateComponent
+  ],
+  exports: [
+    ConsultantComponent
   ]
 })
 export class ConsultantModule {}
