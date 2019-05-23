@@ -12,7 +12,8 @@ import {
   MatExpansionPanel,
   MatDialog,
   MatDialogModule,
-  MatListModule
+  MatListModule,
+  MatPaginatorModule
 } from "@angular/material";
 import { ConsultantComponent } from "./consultant.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -49,7 +50,9 @@ import { ScrollDispatchModule } from '@angular/cdk/scrolling';
     ReactiveFormsModule,
     MatDialogModule,
     MatListModule,
-    ScrollDispatchModule
+    ScrollDispatchModule,
+    MatPaginatorModule
+
   ],
   entryComponents: [
     CommentComponent,
