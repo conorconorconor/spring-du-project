@@ -3,11 +3,24 @@ import { Routes, RouterModule } from "@angular/router";
 import { ConsultantComponent } from "./consultant.component";
 import { ConsultantViewComponent } from "./consultant-view/consultant-view.component";
 import { ConsultantCreateComponent } from "./consultant-create/consultant-create.component";
+import { AuthGuard } from "../services/auth.guard";
 
 const routes: Routes = [
-  { path: "consultants", component: ConsultantComponent },
-  { path: "consultants/create", component: ConsultantCreateComponent },
-  { path: "consultants/:id", component: ConsultantViewComponent }
+  {
+    path: "consultants",
+    component: ConsultantComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "consultants/create",
+    component: ConsultantCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "consultants/:id",
+    component: ConsultantViewComponent,
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

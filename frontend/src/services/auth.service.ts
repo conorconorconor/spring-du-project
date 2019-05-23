@@ -4,11 +4,12 @@ import { Router } from "@angular/router";
 import { Observable, ReplaySubject } from "rxjs";
 import { User } from "../user/user";
 import { LocalStorageService } from "./localStorage.service";
-import { Credentials } from 'src/app/models/credentials';
+import { Credentials } from "src/app/models/credentials";
 
 @Injectable()
 export class AuthService {
   private userSubject = new ReplaySubject<User>();
+  public redirectUrl: string;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -56,7 +57,7 @@ export class AuthService {
     return this.userSubject.asObservable();
   }
 
-  private getUserFromLocalStorage(): User | null {
+  public getUserFromLocalStorage(): User | null {
     const userJsonStr: string | null = this.localStorageService.getItem("user");
 
     if (userJsonStr) {
