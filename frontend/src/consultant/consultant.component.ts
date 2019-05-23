@@ -1,10 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { ConsultantService } from "./consultant.service";
 import { Consultant } from "./consultant";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { Router } from "@angular/router";
 import { ConsultantCreateComponent } from "./consultant-create/consultant-create.component";
 import { MatDialog } from "@angular/material";
+import { AuthService } from "src/services/auth.service";
 
 @Component({
   selector: "app-consultant",
@@ -22,14 +23,19 @@ export class ConsultantComponent implements OnInit {
     "email",
     "addToTeam"
   ];
+  public loggedInUserSub: Subscription;
+  @Input() tmConsultants: Consultant[];
+
   constructor(
     private consultantService: ConsultantService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
     this.getConsultants();
+    this.loggedInUserSub = this.authService.getUser().subscribe();
   }
 
   getConsultants(): void {
