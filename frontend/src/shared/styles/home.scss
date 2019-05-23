@@ -1,15 +1,19 @@
-@import './_colors';
+@import "./_colors";
 
 .home {
-    &-login {
-        padding-top: 4em;
-        min-width: 20em;
-        max-width: 40em;
+  &-login {
+    padding-top: 4em;
+    min-width: 20em;
+    max-width: 40em;
 
-        &-button {
-            color: $white;
-            height: 2.67em;
-            font-size: 1.5em;
-        }
+    &-button {
+      color: $white;
+      height: 2.67em;
+      font-size: 1.5em;
     }
+  }
+}
+
+.green-snackbar {
+  background: green;
 }

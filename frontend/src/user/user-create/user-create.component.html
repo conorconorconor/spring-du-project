@@ -2,12 +2,36 @@
   <div fxLayout="row">
     <div fxFlex></div>
     <div [hidden]="loggedInUser" fxFlex class="home-login">
-      <h3>Consultant Tracker Login</h3>
+      <h3>Team Manager Sign Up</h3>
 
-      <form (ngSubmit)="login()" #userLoginForm="ngForm" fxLayout="column">
+      <form
+        (ngSubmit)="createUser(userSignUpForm)"
+        #userSignUpForm="ngForm"
+        fxLayout="column"
+      >
         <mat-form-field>
           <input
-            [(ngModel)]="credentials.username"
+            [(ngModel)]="user.firstName"
+            type="text"
+            id="firstName"
+            name="firstName"
+            matInput
+            required
+            placeholder="First Name"
+          /> </mat-form-field
+        ><mat-form-field>
+          <input
+            [(ngModel)]="user.lastName"
+            type="text"
+            id="lastName"
+            name="lastName"
+            matInput
+            required
+            placeholder="Last Name"
+          /> </mat-form-field
+        ><mat-form-field>
+          <input
+            [(ngModel)]="user.username"
             type="text"
             id="username"
             name="username"
@@ -18,7 +42,7 @@
         </mat-form-field>
         <mat-form-field>
           <input
-            [(ngModel)]="credentials.password"
+            [(ngModel)]="user.password"
             type="password"
             id="password"
             name="password"
@@ -34,19 +58,9 @@
           color="primary"
           class="home-login-button"
         >
-          Log In
+          Sign Up
         </button>
       </form>
-      <button
-        style="margin: 7px; width: 627px"
-        type="submit"
-        mat-raised-button
-        color="primary"
-        class="home-login-button"
-        [routerLink]="['/sign-up']"
-      >
-        Sign Up
-      </button>
     </div>
     <div fxFlex></div>
   </div>
