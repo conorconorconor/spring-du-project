@@ -87,6 +87,13 @@ export class TeamManagerService {
     return tm;
   }
 
+  public getTmConsultants(id: string): Promise<IConsultant[]> {
+    return this.getTeamManagerById(id).then(result => {
+      console.log(result.consultants);
+      return result.consultants;
+    });
+  }
+
   private async usernameExists(username: string) {
     let exists: boolean;
     await TeamManager.find({ username }, (_, doc) => {
