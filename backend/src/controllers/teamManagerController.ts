@@ -55,7 +55,7 @@ export class TeamManagerController {
     if (loginIsValid) {
       return this.tmService.getTeamManager(credentials.username);
     } else {
-      return "Not a valid login";
+      throw new Error("Not a valid login");
     }
   }
 
