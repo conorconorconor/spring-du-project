@@ -9,6 +9,14 @@ import { UserService } from './user.service';
 })
 export class UserComponent implements OnInit {
   public consultants: Consultant[];
+  public tableHeaders: string[] = [
+    "last name",
+    "first name",
+    "role",
+    "title",
+    "email",
+    "addToTeam"
+  ];
 
   constructor(private userService: UserService) {}
 
