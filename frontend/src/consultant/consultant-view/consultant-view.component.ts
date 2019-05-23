@@ -11,7 +11,6 @@ import { DeleteComponent } from "../delete/delete.component";
 @Component({
   selector: "app-consultant-view",
   templateUrl: "./consultant-view.component.html",
-
   styleUrls: ["../../shared/styles/comment.scss"]
 })
 export class ConsultantViewComponent implements OnInit {
@@ -60,4 +59,6 @@ export class ConsultantViewComponent implements OnInit {
         this.consultant$ = this.consultantService.addComment(this.id, result);
     });
   }
+
+
 }

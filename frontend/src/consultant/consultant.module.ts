@@ -11,7 +11,9 @@ import {
   MatRadioModule,
   MatExpansionPanel,
   MatDialog,
-  MatDialogModule
+  MatDialogModule,
+  MatListModule,
+  MatPaginatorModule
 } from "@angular/material";
 import { ConsultantComponent } from "./consultant.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -21,6 +23,7 @@ import { ConsultantCreateComponent } from "./consultant-create/consultant-create
 import { ConsultantEditComponent } from "./consultant-edit/consultant-edit.component";
 import { CommentComponent } from "./comment/comment.component";
 import { DeleteComponent } from "./delete/delete.component";
+import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,11 @@ import { DeleteComponent } from "./delete/delete.component";
     MatProgressSpinnerModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule,
+    ScrollDispatchModule,
+    MatPaginatorModule
+
   ],
   entryComponents: [
     CommentComponent,
