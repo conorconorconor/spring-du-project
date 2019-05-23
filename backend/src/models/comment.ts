@@ -5,6 +5,10 @@ export const CommentSchema: Schema<IComment> = new Schema({
   text: {
     type: String,
     required: true
+  },
+  publishDate: {
+    type: Date,
+    default: () => new Date()
   }
 });
 

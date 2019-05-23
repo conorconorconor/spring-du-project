@@ -1,38 +1,27 @@
-<!-- <div
-  class="mat-card"
-  fxLayout="column"
-  fxLayoutAlign="center center"
-  fxLayoutGap="20px"
-> -->
-
 <mat-card class="conView" *ngIf="consultant$ | async as consultant">
   <mat-card-header>
     <mat-card-title
-      >{{ consultant.firstName }} {{ consultant.lastName }}</mat-card-title
+      ><mat-icon mat-list-icon>person</mat-icon>{{ consultant.firstName }}
+      {{ consultant.lastName }}</mat-card-title
     >
     <mat-card-subtitle>Role: {{ consultant.role }}</mat-card-subtitle>
     <mat-card-subtitle>Title: {{ consultant.title }}</mat-card-subtitle>
     <mat-card-subtitle>e-Mail: {{ consultant.email }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <!-- <p>
-      {{ consultant.firstName }} {{ consultant.lastName }} is the smallest of
-      the six original and distinct spitz breeds of dog from Japan. A small,
-      agile dog that copes very well with mountainous terrain, the Shiba Inu was
-      originally bred for hunting.
-    </p> -->
-    <!-- <mat-card> -->
-
     <mat-card-title>Comments</mat-card-title>
     <div class="scroll">
       <mat-list role="list">
-        <mat-list-item *ngFor="let comment of consultant.comments">{{
-          comment.text
-        }}</mat-list-item>
+        <mat-list-item *ngFor="let comment of consultant.comments"
+          ><mat-icon mat-list-icon class="material-icons.md-18"
+            >comment</mat-icon
+          >
+          <h4 mat-line>{{ comment.text }}</h4>
+          <p mat-line>{{ comment.publishDate | date: "shortDate" }}</p>
+        </mat-list-item>
       </mat-list>
     </div>
 
-    <!-- </mat-card> -->
     <mat-card-actions class="center">
       <button style="margin: 7px" mat-raised-button (click)="addComment()">
         Add Comment
@@ -53,25 +42,3 @@
     </mat-card-actions>
   </mat-card-content>
 </mat-card>
-
-<!-- <div *ngIf="consultant$ | async as consultant">
-  <div class="consultant-details">
-    <h2>{{ consultant.firstName }} {{ consultant.lastName }}</h2>
-    <ul>
-      <li>{{ consultant.email }}</li>
-      <li>{{ consultant.title }}</li>
-      <li>{{ consultant.role }}</li>
-    </ul>
-    <button style="margin: 7px" type="submit" mat-raised-button color="primary">
-      Edit Consultant</button
-    ><button
-      (ngSubmit)="deleteConsultant()"
-      style="margin: 7px"
-      type="submit"
-      mat-raised-button
-      color="primary"
-    >
-      Delete Consultant
-    </button>
-  </div>
-</div> -->

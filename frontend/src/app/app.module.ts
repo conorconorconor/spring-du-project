@@ -22,7 +22,7 @@ import { GanonModule } from "../ganon/ganon.module";
     ConsultantModule,
     GanonModule,
     FlexLayoutModule,
-    HomeModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
