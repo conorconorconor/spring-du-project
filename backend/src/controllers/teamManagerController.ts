@@ -30,8 +30,11 @@ export class TeamManagerController {
 
   //GET: Get a single TM - should include their consultants
   @Get("/users/:id")
-  public getTeamManager(@Param("id") id: string, @QueryParam("getConsultants") getConsultants: boolean = false) {
-    if(getConsultants) {
+  public getTeamManager(
+    @Param("id") id: string,
+    @QueryParam("getConsultants") getConsultants: boolean = false
+  ): Promise<IConsultant[]> | Promise<ITeamManager> {
+    if (getConsultants) {
       return this.tmService.getTmConsultants(id);
     } else {
       return this.tmService.getTeamManagerById(id);

@@ -6,6 +6,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["../shared/styles/consultant.scss"]
 })
 export class UserComponent implements OnInit {
+  
   constructor() {}
 
   ngOnInit() {}
