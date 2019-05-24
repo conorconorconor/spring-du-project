@@ -39,7 +39,14 @@
     <ng-container matColumnDef="addToTeam">
       <mat-header-cell *matHeaderCellDef>Add to Your Team</mat-header-cell>
       <mat-cell *matCellDef="let consultant">
-button
+        <button
+          routerLink="/user/{{consultant._id}}"
+          class="nested-link"
+          mat-raised-button
+          color="primary"
+        >
+          Add
+        </button>
       </mat-cell>
     </ng-container>
 

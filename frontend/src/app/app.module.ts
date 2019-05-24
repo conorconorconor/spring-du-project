@@ -10,10 +10,11 @@ import { AppRouting } from "./app.routing";
 import { ConsultantModule } from "../consultant/consultant.module";
 import { HomeModule } from "../home/home.module";
 import { GanonModule } from "../ganon/ganon.module";
-import { UserModule } from '../user/user.module';
-import { AuthService } from 'src/services/auth.service';
-import { LocalStorageService } from 'src/services/localStorage.service';
-import { MatIconModule } from '@angular/material/icon';
+import { UserModule } from "../user/user.module";
+import { AuthService } from "src/services/auth.service";
+import { LocalStorageService } from "src/services/localStorage.service";
+import { MatIconModule } from "@angular/material/icon";
+import { UserService } from "src/user/user.service";
 
 @NgModule({
   declarations: [AppComponent],

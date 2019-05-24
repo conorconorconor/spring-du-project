@@ -58,15 +58,14 @@ export class TeamManagerService {
   //add a consultant to a TM
   public async addConsultant(consultantId: string, tmId: string) {
     // return "Add a consultant to this TM";
-    let tm: ITeamManager;
+    let tm: ITeamManager = await this.getTeamManagerById(tmId);;
     let newConsultant: IConsultant;
-    if (this.onTeam(tm, consultantId) !== -1) {
+    if (this.onTeam(tm, consultantId) === -1) {
       newConsultant = await Consultant.findById(consultantId, (err, result) => {
         if (err) {
           return Promise.reject("Consultant not found");
         }
       }).exec();
-      tm = await this.getTeamManagerById(tmId);
       tm.consultants.push(newConsultant._id);
       await tm.save();
       return tm;

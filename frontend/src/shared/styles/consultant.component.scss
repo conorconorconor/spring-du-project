@@ -1,15 +1,16 @@
 table {
-    width: 100%;
+  width: 100%;
 }
-  
-  .mat-form-field {
-    font-size: 14px;
-    width: 95%;
-    margin: 0, 15px;
-  }
+
+.mat-form-field {
+  font-size: 14px;
+  width: 95%;
+  margin: 0, 15px;
+}
 
 .consultant-table-row {
   cursor: pointer;
+  z-index: 0;
 }
 
 .consultant-table-row:hover {
@@ -19,4 +20,8 @@ table {
 .tiny-button {
   width: 20px;
   height: 20px;
+}
+
+.nested-link {
+  z-index: 10;
 }

@@ -4,15 +4,20 @@ import { Consultant } from "./consultant";
 import { Observable, Subscription } from "rxjs";
 import { Router } from "@angular/router";
 import { ConsultantCreateComponent } from "./consultant-create/consultant-create.component";
-import { MatDialog, MatPaginator, MatTable, MatTableDataSource } from "@angular/material";
+import {
+  MatDialog,
+  MatPaginator,
+  MatTable,
+  MatTableDataSource
+} from "@angular/material";
 import { AuthService } from "src/services/auth.service";
+import { UserService } from "src/user/user.service";
 
 @Component({
   selector: "app-consultant",
   templateUrl: "./consultant.component.html",
   styleUrls: ["../shared/styles/consultant.component.scss"]
 })
-
 export class ConsultantComponent implements OnInit {
   public consultant: Consultant = new Consultant();
   public consultants$: Observable<Consultant[]>;
@@ -42,12 +47,10 @@ export class ConsultantComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.getConsultants();
-    this.consultants$.subscribe(
-      results => {
-        this.dataSource.data = results;
-        console.log(this.dataSource.data);
-      }
-    );
+    this.consultants$.subscribe(results => {
+      this.dataSource.data = results;
+      console.log(this.dataSource.data);
+    });
     this.loggedInUserSub = this.authService.getUser().subscribe();
   }
 
@@ -55,9 +58,15 @@ export class ConsultantComponent implements OnInit {
     this.consultants$ = this.consultantService.getConsultants();
   }
 
+  // addToTeam(consultant: Consultant) {
+  //   console.log(consultant);
+  //   this.userService.addConsultant(consultant._id).subscribe(() => {
+  //     this.router.navigate(["/user"]);
+  //   });
+  // }
+
   goToConsultant(consultant: Consultant): void {
     this.router.navigate([`consultants/${consultant._id}`]);
-    console.log(consultant);
   }
 
   public createConsultant(): void {
