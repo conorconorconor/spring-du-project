@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, ViewChild } from "@angular/core";
 import { ConsultantService } from "./consultant.service";
 import { Consultant } from "./consultant";
 import { Observable, Subscription } from "rxjs";
 import { Router } from "@angular/router";
 import { ConsultantCreateComponent } from "./consultant-create/consultant-create.component";
-import { MatDialog } from "@angular/material";
+import { MatDialog, MatPaginator, MatTable, MatTableDataSource } from "@angular/material";
 import { AuthService } from "src/services/auth.service";
 
 @Component({
@@ -12,17 +12,23 @@ import { AuthService } from "src/services/auth.service";
   templateUrl: "./consultant.component.html",
   styleUrls: ["../shared/styles/consultant.component.scss"]
 })
+
 export class ConsultantComponent implements OnInit {
   public consultant: Consultant = new Consultant();
   public consultants$: Observable<Consultant[]>;
   public tableHeaders: string[] = [
-    "last name",
-    "first name",
+    "lastName",
+    "firstName",
     "role",
     "title",
     "email",
     "addToTeam"
   ];
+
+  dataSource = new MatTableDataSource<Consultant>();
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   public loggedInUserSub: Subscription;
   @Input() tmConsultants: Consultant[];
 
@@ -34,7 +40,14 @@ export class ConsultantComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.dataSource.paginator = this.paginator;
     this.getConsultants();
+    this.consultants$.subscribe(
+      results => {
+        this.dataSource.data = results;
+        console.log(this.dataSource.data);
+      }
+    );
     this.loggedInUserSub = this.authService.getUser().subscribe();
   }
 
