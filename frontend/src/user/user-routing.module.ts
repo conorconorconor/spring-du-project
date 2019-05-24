@@ -13,6 +13,11 @@ const routes: Routes = [
   {
     path: "sign-up",
     component: UserCreateComponent
+  },
+  {
+    path: "user/:id",
+    canActivate: [AuthGuard],
+    component: UserComponent
   }
 ];
 

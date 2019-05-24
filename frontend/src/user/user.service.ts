@@ -11,42 +11,32 @@ import { Consultant } from "src/consultant/consultant";
 export class UserService {
   private user: User | null;
 
-  constructor(private authService: AuthService, private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-    this.user = this.authService.getUserFromLocalStorage();
-  }
+  ngOnInit() { }
 
-  public getConsultants(): Observable<Consultant[]> {
-    if (this.user) {
-      return this.http.get<Consultant[]>(
-        `/api/users/${this.user._id}?getConsultants=true`
-      );
-    }
+  public getConsultants(user: User): Observable<Consultant[]> {
+    return this.http.get<Consultant[]>(
+      `/api/users/${user._id}?getConsultants=true`
+    );
   }
 
   public getUser(): Observable<User> {
-    if (this.user) {
-      return this.http.get<User>(`/api/users/${this.user._id}`);
-    }
+    return this.http.get<User>(`/api/users/${this.user._id}`);
   }
 
-  public addConsultant(consultantId: string): Observable<User> {
-    if (this.user) {
-      return this.http.put<User>(
-        `/api/users/add/${this.user._id}?consultantId=${consultantId}`,
-        {}
-      );
-    }
+  public addConsultant(user: User, consultantId: string): Observable<User> {
+    return this.http.put<User>(
+      `/api/users/add/${user._id}?consultantId=${consultantId}`,
+      {}
+    );
   }
 
-  public removeConsultant(consultantId: string): Observable<User> {
-    if (this.user) {
-      return this.http.put<User>(
-        `/api/users/remove/${this.user._id}?consultantId=${consultantId}`,
-        {}
-      );
-    }
+  public removeConsultant(user: User, consultantId: string): Observable<User> {
+    return this.http.put<User>(
+      `/api/users/remove/${user._id}?consultantId=${consultantId}`,
+      {}
+    );
   }
 
   createUser(user: User) {
