@@ -9,7 +9,8 @@ import { Credentials } from "../models/credentials";
 export class TeamManagerService {
   public async createTeamManager(tm: ITeamManager): Promise<ITeamManager> {
     // return "Make a TM";
-    if (await this.usernameExists(tm.username)) {
+    let exists = await this.usernameExists(tm.username);
+    if (!exists) {
       const newTM = new TeamManager(tm);
       return newTM.save();
     } else {
@@ -62,7 +63,7 @@ export class TeamManagerService {
     if (this.onTeam(tm, consultantId) !== -1) {
       newConsultant = await Consultant.findById(consultantId, (err, result) => {
         if (err) {
-          throw new Error("Consultant not found");
+          return Promise.reject("Consultant not found");
         }
       }).exec();
       tm = await this.getTeamManagerById(tmId);
@@ -70,7 +71,7 @@ export class TeamManagerService {
       await tm.save();
       return tm;
     } else {
-      throw new Error("Consultant is already on team");
+      return Promise.reject("Consultant is already on team");
     }
   }
 
@@ -81,7 +82,7 @@ export class TeamManagerService {
     tm = await this.getTeamManagerById(tmId);
     let idx: number = this.onTeam(tm, consultantId);
     if (idx === -1) {
-      throw new Error("Seems this consultant isn't on this team");
+      return Promise.reject("Seems this consultant isn't on this team");
     } else {
       tm.consultants.splice(idx, 1);
       await tm.save();
@@ -96,17 +97,10 @@ export class TeamManagerService {
     });
   }
 
-  private async usernameExists(username: string) {
-    let exists: boolean;
-    await TeamManager.find({ username }, (_, doc) => {
-      if (!doc.length) {
-        exists = true;
-      } else {
-        exists = false;
-      }
-    });
-
-    return exists;
+  private async usernameExists(username: string): Promise<boolean> {
+    let exists: ITeamManager;
+    exists = await TeamManager.findOne({ username }).exec();
+    return exists !== null;
   }
 
   private onTeam(tm: ITeamManager, consultantId: string): number {
