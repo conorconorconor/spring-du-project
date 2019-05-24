@@ -21,8 +21,6 @@ import { ConsultantRoutingModule } from "src/consultant/consultant-routing.modul
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ScrollDispatchModule } from "@angular/cdk/scrolling";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { ConsultantModule } from 'src/consultant/consultant.module';
-import { TableComponent } from 'src/consultant/table/table.component';
 
 @NgModule({
   declarations: [UserComponent, UserCreateComponent],
@@ -46,8 +44,7 @@ import { TableComponent } from 'src/consultant/table/table.component';
     MatIconModule,
     FlexLayoutModule,
     MatPaginatorModule,
-    UserRoutingModule,
-    ConsultantModule
+    UserRoutingModule
   ]
 })
 export class UserModule {}

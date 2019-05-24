@@ -15,7 +15,6 @@ import { AuthService } from "src/services/auth.service";
 export class ConsultantComponent implements OnInit {
   public consultant: Consultant = new Consultant();
   public consultants$: Observable<Consultant[]>;
-  public consultants: Consultant[];
   public tableHeaders: string[] = [
     "last name",
     "first name",
@@ -25,6 +24,7 @@ export class ConsultantComponent implements OnInit {
     "addToTeam"
   ];
   public loggedInUserSub: Subscription;
+  @Input() tmConsultants: Consultant[];
 
   constructor(
     private consultantService: ConsultantService,
@@ -34,9 +34,7 @@ export class ConsultantComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.consultantService.getConsultants().subscribe(result => {
-      this.consultants = result;
-    });
+    this.getConsultants();
     this.loggedInUserSub = this.authService.getUser().subscribe();
   }
 
@@ -44,9 +42,9 @@ export class ConsultantComponent implements OnInit {
     this.consultants$ = this.consultantService.getConsultants();
   }
 
-  goToConsultant(consultantId: string): void {
-    this.router.navigate([`consultants/${consultantId}`]);
-    console.log(consultantId);
+  goToConsultant(consultant: Consultant): void {
+    this.router.navigate([`consultants/${consultant._id}`]);
+    console.log(consultant);
   }
 
   public createConsultant(): void {
