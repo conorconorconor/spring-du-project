@@ -1,17 +1,14 @@
 <div *ngIf="consultants$ | async as consultants" class="consultant">
-  <mat-table
-    [dataSource]="consultants"
-    class="mat-elevation-z4"
-  >
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z4">
     <!-- Last Name Column -->
-    <ng-container matColumnDef="last name">
+    <ng-container matColumnDef="lastName">
       <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
       <mat-cell *matCellDef="let consultant">
         {{ consultant.lastName }}
       </mat-cell>
     </ng-container>
     <!-- First Name Column -->
-    <ng-container matColumnDef="first name">
+    <ng-container matColumnDef="firstName">
       <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
       <mat-cell *matCellDef="let consultant">
         {{ consultant.firstName }}
@@ -42,15 +39,7 @@
     <ng-container matColumnDef="addToTeam">
       <mat-header-cell *matHeaderCellDef>Add to Your Team</mat-header-cell>
       <mat-cell *matCellDef="let consultant">
-        <button
-          mat-mini-fab
-          color="primary"
-          mat-raised-button
-          style="margin: 2px;"
-          [routerLink]="['/consultants/create']"
-        >
-          +
-        </button>
+button
       </mat-cell>
     </ng-container>
 
@@ -61,8 +50,12 @@
       class="consultant-table-row"
     ></mat-row>
   </mat-table>
-  <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
 </div>
+<mat-paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+></mat-paginator>
 
 <button
   color="primary"

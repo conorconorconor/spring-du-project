@@ -13,7 +13,7 @@ import { GanonModule } from "../ganon/ganon.module";
 import { UserModule } from '../user/user.module';
 import { AuthService } from 'src/services/auth.service';
 import { LocalStorageService } from 'src/services/localStorage.service';
-import { ConsultantComponent } from 'src/consultant/consultant.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +27,8 @@ import { ConsultantComponent } from 'src/consultant/consultant.component';
     GanonModule,
     FlexLayoutModule,
     HomeModule,
-    UserModule
+    UserModule,
+    MatIconModule
   ],
   providers: [AuthService, LocalStorageService],
   bootstrap: [AppComponent]

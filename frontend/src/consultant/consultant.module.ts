@@ -25,6 +25,7 @@ import { CommentComponent } from "./comment/comment.component";
 import { DeleteComponent } from "./delete/delete.component";
 import { ScrollDispatchModule } from "@angular/cdk/scrolling";
 import { MatIconModule } from "@angular/material/icon";
+import { ConsultantTableComponent } from './consultant-table/consultant-table.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatIconModule } from "@angular/material/icon";
     ConsultantCreateComponent,
     ConsultantEditComponent,
     DeleteComponent,
-    CommentComponent
+    CommentComponent,
+    ConsultantTableComponent
   ],
   imports: [
     CommonModule,
