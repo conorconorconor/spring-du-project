@@ -1,10 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { Consultant } from "src/consultant/consultant";
 import { UserService } from "./user.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { AuthService } from "src/services/auth.service";
 import { User } from "./user";
+import { MatTableDataSource, MatSort } from "@angular/material";
 
 @Component({
   selector: "app-user",
@@ -14,8 +15,8 @@ import { User } from "./user";
 export class UserComponent implements OnInit {
   public consultants: Consultant[];
   public consultants$: Observable<Consultant[]>;
-  private user: User;
   public user$: Observable<User>;
+  private user: User;
   public tableHeaders: string[] = [
     "lastName",
     "firstName",
@@ -24,6 +25,10 @@ export class UserComponent implements OnInit {
     "email",
     "removeFromTeam"
   ];
+
+  dataSource = new MatTableDataSource<Consultant>();
+
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private userService: UserService,
@@ -36,12 +41,10 @@ export class UserComponent implements OnInit {
     this.user = this.authService.getUserFromLocalStorage();
     this.user$ = this.authService.getUser();
     this.user$.subscribe(user => {
-      this.consultants = user.consultants;
+      // this.consultants = user.consultants;
+      this.dataSource.data = user.consultants;
     });
-  }
-
-  public getConsultants() {
-    this.consultants$ = this.userService.getConsultants(this.user);
+    this.dataSource.sort = this.sort;
   }
 
   goToConsultant(consultant: Consultant): void {
@@ -54,12 +57,10 @@ export class UserComponent implements OnInit {
       this.consultants = user.consultants;
       console.log(this.consultants);
     });
-    // this.user$ = this.authService.getUser();
-    // this.user$.subscribe(user => {
-    //   const i = user.consultants.findIndex(el => el._id === consultant._id);
-    //   this.consultants.splice(i, 1);
-    //   console.log(this.consultants);
-    //   this.userService.removeConsultant(consultant);
-    // });
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    console.log(this.dataSource.filter);
   }
 }
