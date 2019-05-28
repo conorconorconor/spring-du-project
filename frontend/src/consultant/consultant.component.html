@@ -40,10 +40,9 @@
       <mat-header-cell *matHeaderCellDef>Add to Your Team</mat-header-cell>
       <mat-cell *matCellDef="let consultant">
         <button
-          routerLink="/user/{{consultant._id}}"
-          class="nested-link"
+          routerLink="/user/{{ consultant._id }}"
+          class="button-grey"
           mat-raised-button
-          color="primary"
         >
           Add
         </button>
