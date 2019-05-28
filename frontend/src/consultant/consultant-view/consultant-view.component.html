@@ -12,7 +12,11 @@
         <mat-card-subtitle>{{ consultant.email }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-actions class="center"
-        ><button class="button-grey" mat-raised-button>
+        ><button
+          (click)="removeFromTeam(consultant)"
+          class="button-grey"
+          mat-raised-button
+        >
           Remove From Team
         </button></mat-card-actions
       >
