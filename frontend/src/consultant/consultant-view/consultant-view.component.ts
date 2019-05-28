@@ -7,6 +7,7 @@ import { MatDialog } from "@angular/material";
 import { CommentComponent } from "../comment/comment.component";
 import { ConsultantComment } from "../comment";
 import { DeleteComponent } from "../delete/delete.component";
+import { UserService } from "src/user/user.service";
 
 @Component({
   selector: "app-consultant-view",
@@ -22,7 +23,8 @@ export class ConsultantViewComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private consultantService: ConsultantService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
@@ -47,6 +49,12 @@ export class ConsultantViewComponent implements OnInit {
         this.consultantService.deleteConsultant(id).subscribe();
         this.router.navigate(["/consultants"]);
       }
+    });
+  }
+
+  removeFromTeam(consultant: Consultant) {
+    this.userService.removeConsultant(consultant).subscribe(result => {
+      this.router.navigate(["user"]);
     });
   }
 
