@@ -7,6 +7,7 @@ import { MatDialog } from "@angular/material";
 import { CommentComponent } from "../comment/comment.component";
 import { ConsultantComment } from "../comment";
 import { DeleteComponent } from "../delete/delete.component";
+import { UserService } from "src/user/user.service";
 
 @Component({
   selector: "app-consultant-view",
@@ -14,7 +15,7 @@ import { DeleteComponent } from "../delete/delete.component";
   styleUrls: ["../../shared/styles/comment.scss"]
 })
 export class ConsultantViewComponent implements OnInit {
-  public consultant$: Observable<Consultant>;
+  public consultant: Consultant;
   private id: string = this.route.snapshot.paramMap.get("id");
   public delete: boolean = false;
 
@@ -22,7 +23,8 @@ export class ConsultantViewComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private consultantService: ConsultantService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
@@ -34,7 +36,9 @@ export class ConsultantViewComponent implements OnInit {
   }
 
   updateConsultant() {
-    this.consultant$ = this.consultantService.getConsultantById(this.id);
+    this.consultantService.getConsultantById(this.id).subscribe(result => {
+      this.consultant = result;
+    });
   }
 
   deleteConsultant(id: string): void {
@@ -48,6 +52,12 @@ export class ConsultantViewComponent implements OnInit {
     });
   }
 
+  removeFromTeam(consultant: Consultant) {
+    this.userService.removeConsultant(consultant).subscribe(result => {
+      this.router.navigate(["user"]);
+    });
+  }
+
   addComment(): void {
     let dialog = this.dialog.open(CommentComponent, {
       width: "500px",
@@ -55,7 +65,9 @@ export class ConsultantViewComponent implements OnInit {
     });
     dialog.afterClosed().subscribe((result: ConsultantComment) => {
       if (result.text) {
-        this.consultant$ = this.consultantService.addComment(this.id, result);
+        this.consultantService.addComment(this.id, result).subscribe(result => {
+          this.consultant = result;
+        });
       }
     });
   }

@@ -61,7 +61,7 @@
         >
         <mat-cell *matCellDef="let consultant">
           <i
-            routerLink="/user/{{ consultant._id }}"
+            (click)="addToTeam($event, consultant)"
             class="material-icons"
             style="color:#568d40"
           >
