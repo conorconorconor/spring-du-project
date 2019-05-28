@@ -1,4 +1,5 @@
 import { ConsultantComment } from './comment';
+import { User } from 'src/user/user';
 
 export class Consultant {
   _id: string;
@@ -8,5 +9,6 @@ export class Consultant {
   email: string;
   title: string;
   comments: ConsultantComment[];
+  teamManager: User;
 }
 

@@ -9,8 +9,8 @@ import { AuthService } from "src/services/auth.service";
 export class HeaderComponent {
   constructor(private authService: AuthService) {}
 
-  public logout() {
-    this.authService.logout();
+  public async logout() {
+    await this.authService.logout();
   }
 
   public checkLogin() {
