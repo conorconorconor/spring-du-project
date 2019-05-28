@@ -17,7 +17,6 @@ import { AuthService } from "src/services/auth.service";
   templateUrl: "./consultant.component.html",
   styleUrls: ["../shared/styles/consultant.component.scss"]
 })
-
 export class ConsultantComponent implements OnInit {
   public consultant: Consultant = new Consultant();
   public consultants$: Observable<Consultant[]>;
@@ -59,13 +58,6 @@ export class ConsultantComponent implements OnInit {
   getConsultants(): void {
     this.consultants$ = this.consultantService.getConsultants();
   }
-
-  // addToTeam(consultant: Consultant) {
-  //   console.log(consultant);
-  //   this.userService.addConsultant(consultant._id).subscribe(() => {
-  //     this.router.navigate(["/user"]);
-  //   });
-  // }
 
   goToConsultant(consultant: Consultant): void {
     this.router.navigate([`consultants/${consultant._id}`]);

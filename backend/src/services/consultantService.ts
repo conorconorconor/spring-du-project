@@ -20,6 +20,7 @@ export class ConsultantService {
   public getConsultantById(id: string): Promise<IConsultant> {
     return Consultant.findById(id)
       .populate("comments")
+      .populate("author")
       .exec();
   }
 

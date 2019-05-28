@@ -27,7 +27,10 @@
                 >comment</mat-icon
               >
               <h4 mat-line>{{ comment.text }}</h4>
-              <p mat-line>{{ comment.publishDate | date: "shortDate" }}</p>
+              <p mat-line>
+                {{ comment.author }} -
+                {{ comment.publishDate | date: "shortDate" }}
+              </p>
             </mat-list-item>
           </mat-list>
         </div>

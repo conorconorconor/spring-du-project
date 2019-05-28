@@ -3,13 +3,14 @@ import { Consultant } from "./consultant";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { ConsultantComment } from "./comment";
+import { AuthService } from "src/services/auth.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class ConsultantService {
   consultant: any;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   getConsultants(): Observable<Consultant[]> {
     return this.http.get<Consultant[]>("/api/consultants");
@@ -27,6 +28,8 @@ export class ConsultantService {
   }
 
   addComment(id: string, comment: ConsultantComment): Observable<Consultant> {
+    let user = this.authService.getUserFromLocalStorage();
+    comment.author = user.firstName + " " + user.lastName;
     return this.http.post<Consultant>(`/api/consultants/${id}`, comment);
   }
 }
