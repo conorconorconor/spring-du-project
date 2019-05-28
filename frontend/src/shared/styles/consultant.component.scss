@@ -1,3 +1,5 @@
+@import "./_colors.scss";
+
 table {
   width: 100%;
 }
@@ -26,9 +28,40 @@ table {
   z-index: 1;
 }
 
+.conView.mat-card {
+  display: block;
+  position: relative;
+  margin: 10px 40px;
+  padding: relative;
+  border-radius: 4px;
+  // text-align: center;
+}
+
+.mat-header-cell {
+  color: #568d40;
+  font-size: 120%;
+  text-shadow: 1px 1px 2px $grey;
+}
+
+.mat-card-title {
+  color: #568d40;
+  font-size: 160%;
+  text-shadow: 1px 1px 2px $grey;
+  margin-bottom: 10px;
+}
+
+.mat-paginator-navigation-previous {
+  color: #568d40;
+}
+
+.mat-paginator-navigation-next {
+  color: #568d40;
+}
+
 .button-grey {
   color: whitesmoke;
   background-color: #4c4c4c;
   margin: 7px;
   z-index: 1;
 }
+
