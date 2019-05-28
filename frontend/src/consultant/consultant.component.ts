@@ -17,7 +17,6 @@ import { AuthService } from "src/services/auth.service";
   templateUrl: "./consultant.component.html",
   styleUrls: ["../shared/styles/consultant.component.scss"]
 })
-
 export class ConsultantComponent implements OnInit {
   public consultant: Consultant = new Consultant();
   public consultants$: Observable<Consultant[]>;
