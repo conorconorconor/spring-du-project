@@ -7,17 +7,17 @@ import { ConsultantCreateComponent } from "./consultant-create/consultant-create
 import {
   MatDialog,
   MatPaginator,
-  MatTable,
-  MatTableDataSource
+  MatTableDataSource,
+  MatSort
 } from "@angular/material";
 import { AuthService } from "src/services/auth.service";
-import { UserService } from "src/user/user.service";
 
 @Component({
   selector: "app-consultant",
   templateUrl: "./consultant.component.html",
   styleUrls: ["../shared/styles/consultant.component.scss"]
 })
+
 export class ConsultantComponent implements OnInit {
   public consultant: Consultant = new Consultant();
   public consultants$: Observable<Consultant[]>;
@@ -33,6 +33,7 @@ export class ConsultantComponent implements OnInit {
   dataSource = new MatTableDataSource<Consultant>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   public loggedInUserSub: Subscription;
   @Input() tmConsultants: Consultant[];
@@ -46,6 +47,7 @@ export class ConsultantComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
     this.getConsultants();
     this.consultants$.subscribe(results => {
       this.dataSource.data = results;

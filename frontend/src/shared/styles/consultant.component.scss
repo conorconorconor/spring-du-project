@@ -1,3 +1,5 @@
+@import "./_colors.scss";
+
 table {
   width: 100%;
 }
@@ -24,4 +26,27 @@ table {
 
 .nested-link {
   z-index: 1;
+}
+
+.conView.mat-card {
+  display: block;
+  position: relative;
+  margin: 50px;
+  padding: relative;
+  border-radius: 4px;
+  //   text-align: center;
+}
+
+.mat-header-cell {
+  color: #568d40;
+  font-size: 120%;
+  text-shadow: 1px 1px 2px $grey;
+}
+
+.mat-paginator-navigation-previous {
+  color: #568d40;
+}
+
+.mat-paginator-navigation-next {
+  color: #568d40;
 }
