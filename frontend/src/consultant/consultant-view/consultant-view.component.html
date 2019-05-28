@@ -1,5 +1,5 @@
 <div fxLayout="column">
-  <mat-card class="conView">
+  <mat-card class="mat-elevation-z0">
     <mat-card class="consultant" *ngIf="consultant">
       <mat-card-header>
         <mat-card-title
@@ -11,6 +11,7 @@
         <mat-card-subtitle>{{ consultant.title }}</mat-card-subtitle>
         <mat-card-subtitle>{{ consultant.email }}</mat-card-subtitle>
       </mat-card-header>
+      <mat-card-content>
       <mat-card-actions class="center"
         ><button
           (click)="removeFromTeam(consultant)"
@@ -18,24 +19,29 @@
           mat-raised-button
         >
           Remove From Team
-        </button></mat-card-actions
-      >
+        </button>
+      </mat-card-actions>
+    </mat-card-content>
     </mat-card>
-    <mat-card class="comment" *ngIf="consultant">
+    <mat-card class="consultant" *ngIf="consultant">
       <mat-card-content>
-        <mat-card-title>Comments</mat-card-title>
+        <mat-card-title>&nbsp;&nbsp;Comments</mat-card-title>
         <div class="scroll">
           <mat-list role="list">
-            <mat-list-item *ngFor="let comment of consultant.comments"
-              ><mat-icon mat-list-icon class="material-icons.md-18"
-                >comment</mat-icon
+            <mat-card
+              class="comment"
+              *ngFor="let comment of consultant.comments"
+            >
+              <mat-card-content
+                ><mat-icon mat-list-icon class="material-icons.md-18"
+                  >comment</mat-icon
+                >&nbsp;&nbsp;{{ comment.text }}</mat-card-content
               >
-              <h4 mat-line>{{ comment.text }}</h4>
-              <p mat-line>
+              <mat-card-subtitle>
                 {{ comment.author }} -
                 {{ comment.publishDate | date: "shortDate" }}
-              </p>
-            </mat-list-item>
+              </mat-card-subtitle>
+            </mat-card>
           </mat-list>
         </div>
 
@@ -45,6 +51,8 @@
           </button>
         </mat-card-actions>
       </mat-card-content>
+
     </mat-card>
+
   </mat-card>
 </div>
