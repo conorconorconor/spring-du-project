@@ -31,7 +31,9 @@ export class TeamManagerService {
   }
 
   public getTeamManager(username?: string) {
-    return TeamManager.findOne({ username }).exec();
+    return TeamManager.findOne({ username })
+      .populate("consultants")
+      .exec();
   }
 
   //may not actually need this
@@ -58,7 +60,7 @@ export class TeamManagerService {
   //add a consultant to a TM
   public async addConsultant(consultantId: string, tmId: string) {
     // return "Add a consultant to this TM";
-    let tm: ITeamManager = await this.getTeamManagerById(tmId);;
+    let tm: ITeamManager = await this.getTeamManagerById(tmId);
     let newConsultant: IConsultant;
     if (this.onTeam(tm, consultantId) === -1) {
       newConsultant = await Consultant.findById(consultantId, (err, result) => {

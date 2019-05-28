@@ -34,6 +34,7 @@ export class AuthService {
           .post<User>("/api/users/login", credentials)
           .toPromise();
         this.userSubject.next(loggedInUser);
+        console.log(loggedInUser);
         this.localStorageService.setItem("user", JSON.stringify(loggedInUser));
       } catch (e) {
         return Promise.reject(e.error._errors[0]);

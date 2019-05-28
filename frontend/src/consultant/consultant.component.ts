@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ConsultantService } from "./consultant.service";
 import { Consultant } from "./consultant";
 import { Observable, Subscription } from "rxjs";
@@ -8,9 +8,11 @@ import {
   MatDialog,
   MatPaginator,
   MatTableDataSource,
-  MatSort
+  MatSort,
+  MatSnackBar
 } from "@angular/material";
 import { AuthService } from "src/services/auth.service";
+import { UserService } from "../user/user.service";
 
 @Component({
   selector: "app-consultant",
@@ -35,13 +37,14 @@ export class ConsultantComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   public loggedInUserSub: Subscription;
-  @Input() tmConsultants: Consultant[];
 
   constructor(
     private consultantService: ConsultantService,
     private router: Router,
     public dialog: MatDialog,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService,
+    private snackbar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -57,6 +60,21 @@ export class ConsultantComponent implements OnInit {
 
   getConsultants(): void {
     this.consultants$ = this.consultantService.getConsultants();
+  }
+
+  addToTeam(e: Event, consultant: Consultant) {
+    e.stopPropagation();
+    this.userService.addConsultant(consultant).subscribe(
+      () => {
+        this.snackbar.open("Added to team", "", {
+          duration: 3000
+        });
+      },
+      err =>
+        this.snackbar.open(err, "", {
+          duration: 3000
+        })
+    );
   }
 
   goToConsultant(consultant: Consultant): void {

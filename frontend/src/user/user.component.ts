@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { AuthService } from "src/services/auth.service";
 import { User } from "./user";
-import { MatTableDataSource, MatSort } from '@angular/material';
+import { MatTableDataSource, MatSort } from "@angular/material";
 
 @Component({
   selector: "app-user",
@@ -13,17 +13,17 @@ import { MatTableDataSource, MatSort } from '@angular/material';
   styleUrls: ["../shared/styles/consultant.component.scss"]
 })
 export class UserComponent implements OnInit {
-  private id: string | null = null;
-
   public consultants: Consultant[];
   public consultants$: Observable<Consultant[]>;
-  private user: User = new User();
+  public user$: Observable<User>;
+  private user: User;
   public tableHeaders: string[] = [
     "lastName",
     "firstName",
     "role",
     "title",
     "email",
+    "removeFromTeam"
   ];
 
   dataSource = new MatTableDataSource<Consultant>();
@@ -39,24 +39,24 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.authService.getUserFromLocalStorage();
-    this.id = this.route.snapshot.paramMap.get("id");
-    this.dataSource.sort = this.sort;
-    if (this.id) {
-      this.userService.addConsultant(this.user, this.id).subscribe();
-    }
-    this.getConsultants();
-    this.consultants$.subscribe(result => {
-      this.dataSource.data = result;
-      console.log(result);
+    this.user$ = this.authService.getUser();
+    this.user$.subscribe(user => {
+      // this.consultants = user.consultants;
+      this.dataSource.data = user.consultants;
     });
-  }
-
-  public getConsultants() {
-    this.consultants$ = this.userService.getConsultants(this.user);
+    this.dataSource.sort = this.sort;
   }
 
   goToConsultant(consultant: Consultant): void {
     this.router.navigate([`consultants/${consultant._id}`]);
+  }
+
+  removeFromTeam(e: Event, consultant: Consultant): void {
+    e.stopPropagation();
+    this.userService.removeConsultant(consultant).subscribe(user => {
+      this.consultants = user.consultants;
+      console.log(this.consultants);
+    });
   }
 
   applyFilter(filterValue: string) {

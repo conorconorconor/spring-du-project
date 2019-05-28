@@ -1,5 +1,9 @@
 <mat-card class="conView">
   <mat-card-title>&nbsp;My Consultants</mat-card-title>
+<<<<<<< HEAD
+  <div>
+    <mat-table [dataSource]="consultants" class="mat-elevation-z4">
+=======
   <div *ngIf="consultants$ | async as consultants" class="consultant">
       <mat-form-field>
           <input
@@ -9,6 +13,7 @@
           />
         </mat-form-field>
     <mat-table [dataSource]="dataSource" class="mat-elevation-z4" matSort>
+>>>>>>> 7d252037c69b9e69169f8e83a02b6fb2e0616aa5
       <!-- Last Name Column -->
       <ng-container matColumnDef="lastName">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
