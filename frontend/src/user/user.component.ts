@@ -1,10 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { Consultant } from "src/consultant/consultant";
 import { UserService } from "./user.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { AuthService } from "src/services/auth.service";
 import { User } from "./user";
+import { MatTableDataSource, MatSort } from '@angular/material';
 
 @Component({
   selector: "app-user",
@@ -16,7 +17,7 @@ export class UserComponent implements OnInit {
 
   public consultants: Consultant[];
   public consultants$: Observable<Consultant[]>;
-  private user: User;
+  private user: User = new User();
   public tableHeaders: string[] = [
     "lastName",
     "firstName",
@@ -25,6 +26,9 @@ export class UserComponent implements OnInit {
     "email",
   ];
 
+  dataSource = new MatTableDataSource<Consultant>();
+
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private userService: UserService,
@@ -36,11 +40,13 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.user = this.authService.getUserFromLocalStorage();
     this.id = this.route.snapshot.paramMap.get("id");
+    this.dataSource.sort = this.sort;
     if (this.id) {
       this.userService.addConsultant(this.user, this.id).subscribe();
     }
     this.getConsultants();
     this.consultants$.subscribe(result => {
+      this.dataSource.data = result;
       console.log(result);
     });
   }
@@ -51,5 +57,10 @@ export class UserComponent implements OnInit {
 
   goToConsultant(consultant: Consultant): void {
     this.router.navigate([`consultants/${consultant._id}`]);
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    console.log(this.dataSource.filter);
   }
 }

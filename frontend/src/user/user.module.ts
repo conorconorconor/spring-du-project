@@ -15,7 +15,8 @@ import {
   MatDialogModule,
   MatListModule,
   MatIconModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSortModule
 } from "@angular/material";
 import { ConsultantRoutingModule } from "src/consultant/consultant-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -44,7 +45,9 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatIconModule,
     FlexLayoutModule,
     MatPaginatorModule,
-    UserRoutingModule
-  ]
+    UserRoutingModule,
+    // MatSortModule
+  ],
+  exports: [UserCreateComponent]
 })
 export class UserModule {}
