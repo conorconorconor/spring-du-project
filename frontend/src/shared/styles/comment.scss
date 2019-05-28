@@ -1,3 +1,5 @@
+@import '~@angular/material/theming';
+
 .wide-boy-club {
   width: 100%;
 }
@@ -9,6 +11,7 @@
   padding: relative;
   border-radius: 4px;
   width: auto;
+  @include mat-elevation(9);
 }
 
 .comment.mat-card {
@@ -48,19 +51,16 @@
 }
 
 .conView.mat-card {
+  @include mat-elevation(9);
   display: block;
   position: relative;
   margin: 20px;
   padding: 0;
-  
 }
 
-.commentView.mat-card {
-  display: block;
-  position: relative;
-  margin: 10px;
-  padding: relative;
-  // border: none !important;
+.comment.mat-card {
+  @include mat-elevation(3);
+  margin-top: 0px;
 }
 
 .mat-elevation-z0.mat-card {
