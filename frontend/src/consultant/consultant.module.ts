@@ -13,7 +13,8 @@ import {
   MatDialog,
   MatDialogModule,
   MatListModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSortModule
 } from "@angular/material";
 import { ConsultantComponent } from "./consultant.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -55,7 +56,8 @@ import { ConsultantTableComponent } from "./consultant-table/consultant-table.co
     MatListModule,
     ScrollDispatchModule,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ],
   entryComponents: [
     CommentComponent,
