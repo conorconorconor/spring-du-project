@@ -13,14 +13,16 @@ export class ConsultantService {
   }
 
   public getConsultants(): Promise<IConsultant[]> {
-    return Consultant.find().exec();
+    return Consultant.find()
+      .populate("teamManager")
+      .exec();
   }
 
   //returns a consultant with all of their comments
   public getConsultantById(id: string): Promise<IConsultant> {
     return Consultant.findById(id)
       .populate("comments")
-      .populate("author")
+      .populate("teamManager")
       .exec();
   }
 
