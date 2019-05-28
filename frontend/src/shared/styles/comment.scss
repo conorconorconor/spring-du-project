@@ -5,23 +5,19 @@
 .consultant.mat-card {
   display: block;
   position: relative;
-  margin: 50px;
+  margin: 25px;
   padding: relative;
   border-radius: 4px;
-  height: 10%;
   width: auto;
-  text-align: center;
-  //   text-align: center;
 }
 
 .comment.mat-card {
   display: block;
   position: relative;
-  margin: 50px;
+  margin: 25px;
   padding: relative;
   border-radius: 4px;
-  width: 80%;
-  //   text-align: center;
+  width: auto;
 }
 
 .center {
@@ -43,6 +39,20 @@
 
 .material-icons.md-18 {
   font-size: 18px;
+}
+
+.mat-card-title {
+  color: #568d40;
+  font-size: 20pt;
+  margin-bottom: 10px;
+}
+
+.conView.mat-card {
+  display: block;
+  position: relative;
+  margin: 10px 30px;
+  padding: relative;
+  border: none !important;
 }
 
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");

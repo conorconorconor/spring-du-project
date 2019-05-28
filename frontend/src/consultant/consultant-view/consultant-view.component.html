@@ -1,5 +1,5 @@
 <div fxLayout="column">
-  <div fxLayout="row">
+  <mat-card class="conView">
     <mat-card class="consultant" *ngIf="consultant$ | async as consultant">
       <mat-card-header>
         <mat-card-title
@@ -39,5 +39,5 @@
         </mat-card-actions>
       </mat-card-content>
     </mat-card>
-  </div>
+  </mat-card>
 </div>
