@@ -7,4 +7,8 @@ export class User {
   username: string;
   password: string;
   consultants: Consultant[];
+  fullName: string;
+  constructor() {
+    this.fullName = this.firstName + " " + this.lastName;
+  }
 }
