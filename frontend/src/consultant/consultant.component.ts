@@ -66,7 +66,7 @@ export class ConsultantComponent implements OnInit {
     e.stopPropagation();
     this.userService.addConsultant(consultant).subscribe(
       () => {
-        this.snackbar.open("Added to team", "", {
+        this.snackbar.open("Added to Team", "", {
           duration: 3000,
           panelClass: ["green-snackbar"]
         });
