@@ -40,7 +40,7 @@
       <mat-header-cell *matHeaderCellDef>Add to Your Team</mat-header-cell>
       <mat-cell *matCellDef="let consultant">
         <button
-          routerLink="/user/{{consultant._id}}"
+          (click)="addToTeam($event, consultant)"
           class="nested-link"
           mat-raised-button
           color="primary"

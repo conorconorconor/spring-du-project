@@ -8,7 +8,8 @@ import {
   MatDialog,
   MatPaginator,
   MatTable,
-  MatTableDataSource
+  MatTableDataSource,
+  MatSnackBar
 } from "@angular/material";
 import { AuthService } from "src/services/auth.service";
 import { UserService } from "src/user/user.service";
@@ -35,13 +36,14 @@ export class ConsultantComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   public loggedInUserSub: Subscription;
-  @Input() tmConsultants: Consultant[];
 
   constructor(
     private consultantService: ConsultantService,
     private router: Router,
     public dialog: MatDialog,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService,
+    private snackbar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -58,12 +60,20 @@ export class ConsultantComponent implements OnInit {
     this.consultants$ = this.consultantService.getConsultants();
   }
 
-  // addToTeam(consultant: Consultant) {
-  //   console.log(consultant);
-  //   this.userService.addConsultant(consultant._id).subscribe(() => {
-  //     this.router.navigate(["/user"]);
-  //   });
-  // }
+  addToTeam(e: Event, consultant: Consultant) {
+    e.stopPropagation();
+    this.userService.addConsultant(consultant).subscribe(
+      () => {
+        this.snackbar.open("Added to team", "", {
+          duration: 3000
+        });
+      },
+      err =>
+        this.snackbar.open(err, "", {
+          duration: 3000
+        })
+    );
+  }
 
   goToConsultant(consultant: Consultant): void {
     this.router.navigate([`consultants/${consultant._id}`]);

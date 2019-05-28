@@ -84,7 +84,7 @@ export class TeamManagerController {
     @Param("id") id: string,
     @QueryParam("consultantId") consultantId: string
   ) {
-    return this.tmService.addConsultant(consultantId, id);
+    return this.tmService.addConsultant(consultantId, id).catch(err => err);
   }
 
   //PUT: Removes a consultant from this TM

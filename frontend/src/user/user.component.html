@@ -1,4 +1,4 @@
-<div *ngIf="consultants$ | async as consultants" class="consultant">
+<div *ngIf="user$ | async as user" class="consultant">
   <mat-table [dataSource]="consultants" class="mat-elevation-z4">
     <!-- Last Name Column -->
     <ng-container matColumnDef="lastName">
@@ -36,6 +36,19 @@
       </mat-cell>
     </ng-container>
     <!-- Add to Team Column -->
+    <ng-container matColumnDef="removeFromTeam">
+      <mat-header-cell *matHeaderCellDef>Remove</mat-header-cell>
+      <mat-cell *matCellDef="let consultant">
+        <button
+          (click)="removeFromTeam($event, consultant)"
+          class="nested-link"
+          mat-raised-button
+          color="warn"
+        >
+          Remove
+        </button>
+      </mat-cell>
+    </ng-container>
 
     <mat-header-row *matHeaderRowDef="tableHeaders"></mat-header-row>
     <mat-row
