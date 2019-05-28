@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ConsultantService } from "./consultant.service";
 import { Consultant } from "./consultant";
 import { Observable, Subscription } from "rxjs";
@@ -8,9 +8,11 @@ import {
   MatDialog,
   MatPaginator,
   MatTableDataSource,
-  MatSort
+  MatSort,
+  MatSnackBar
 } from "@angular/material";
 import { AuthService } from "src/services/auth.service";
+import { UserService } from "../user/user.service";
 
 @Component({
   selector: "app-consultant",

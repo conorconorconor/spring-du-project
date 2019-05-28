@@ -1,6 +1,6 @@
 <mat-card class="conView">
   <mat-card-title>&nbsp;My Consultants</mat-card-title>
-  <div *ngIf="consultants$ | async as consultants" class="consultant">
+  <div>
     <mat-table [dataSource]="consultants" class="mat-elevation-z4">
       <!-- Last Name Column -->
       <ng-container matColumnDef="lastName">

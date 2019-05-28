@@ -1,9 +1,13 @@
 <mat-card class="conView">
   <mat-card-title>&nbsp;All Consultants</mat-card-title>
   <div>
-      <mat-form-field>
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
-        </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        (keyup)="applyFilter($event.target.value)"
+        placeholder="Search"
+      />
+    </mat-form-field>
     <mat-table [dataSource]="dataSource" class="mat-elevation-z4" matSort>
       <!-- Last Name Column -->
       <ng-container matColumnDef="lastName">
@@ -57,7 +61,7 @@
         >
         <mat-cell *matCellDef="let consultant">
           <i
-            routerLink="/user/{{ consultant._id }}"
+            (click)="addToTeam($event, consultant)"
             class="material-icons"
             style="color:#568d40"
           >
