@@ -54,6 +54,7 @@ export class UserComponent implements OnInit {
     e.stopPropagation();
     this.userService.removeConsultant(consultant).subscribe(user => {
       this.consultants = user.consultants;
+      this.dataSource.data = this.consultants;
       console.log(this.consultants);
     });
   }
