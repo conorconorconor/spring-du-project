@@ -84,4 +84,8 @@ export class ConsultantComponent implements OnInit {
       }
     });
   }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

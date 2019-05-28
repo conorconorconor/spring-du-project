@@ -28,6 +28,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatIconModule } from "@angular/material/icon";
 import { ConsultantTableComponent } from "./consultant-table/consultant-table.component";
 
+
 @NgModule({
   declarations: [
     ConsultantComponent,
