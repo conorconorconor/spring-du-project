@@ -22,8 +22,7 @@ export class UserComponent implements OnInit {
     "firstName",
     "role",
     "title",
-    "email",
-    "removeFromTeam"
+    "email"
   ];
 
   dataSource = new MatTableDataSource<Consultant>();
