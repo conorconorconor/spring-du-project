@@ -1,5 +1,6 @@
 import { Model, Schema, model } from "mongoose";
 import { IComment } from "../interfaces/comment";
+import { StringDecoder } from "string_decoder";
 
 export const CommentSchema: Schema<IComment> = new Schema({
   text: {
@@ -9,6 +10,9 @@ export const CommentSchema: Schema<IComment> = new Schema({
   publishDate: {
     type: Date,
     default: () => new Date()
+  },
+  author: {
+    type: String
   }
 });
 

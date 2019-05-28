@@ -54,7 +54,6 @@ export class ConsultantViewComponent implements OnInit {
       height: "400px"
     });
     dialog.afterClosed().subscribe((result: ConsultantComment) => {
-      console.log(result);
       if (result.text) {
         this.consultant$ = this.consultantService.addComment(this.id, result);
       }
