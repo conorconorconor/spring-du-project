@@ -1,5 +1,6 @@
 import { Document } from "mongoose";
 import { IComment } from "./comment";
+import { ITeamManager } from "./teamManager";
 
 export interface IConsultant extends Document {
   firstName?: string;
@@ -8,4 +9,5 @@ export interface IConsultant extends Document {
   title?: string;
   role?: string;
   comments?: IComment[];
+  teamManager: ITeamManager;
 }

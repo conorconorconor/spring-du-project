@@ -26,7 +26,11 @@ const ConsultantSchema: Schema = new Schema({
       ref: "Comment",
       type: Schema.Types.ObjectId
     }
-  ]
+  ],
+  teamManager: {
+    ref: "TeamManager",
+    type: Schema.Types.ObjectId
+  }
 });
 
 export const Consultant: Model<IConsultant> = model<IConsultant>(
