@@ -67,7 +67,8 @@ export class ConsultantComponent implements OnInit {
     this.userService.addConsultant(consultant).subscribe(
       () => {
         this.snackbar.open("Added to team", "", {
-          duration: 3000
+          duration: 3000,
+          panelClass: ["green-snackbar"]
         });
       },
       err =>
