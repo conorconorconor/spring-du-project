@@ -14,7 +14,7 @@
 .comment.mat-card {
   display: block;
   position: relative;
-  margin: 25px;
+  margin: 5px;
   padding: relative;
   border-radius: 4px;
   width: auto;
@@ -50,9 +50,21 @@
 .conView.mat-card {
   display: block;
   position: relative;
-  margin: 10px 30px;
+  margin: 20px;
+  padding: 0;
+  
+}
+
+.commentView.mat-card {
+  display: block;
+  position: relative;
+  margin: 10px;
   padding: relative;
-  border: none !important;
+  // border: none !important;
+}
+
+.mat-elevation-z0.mat-card {
+
 }
 
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
