@@ -1,6 +1,6 @@
 <div fxLayout="column">
   <div fxLayout="row">
-    <mat-card class="conView" *ngIf="consultant$ | async as consultant">
+    <mat-card class="consultant" *ngIf="consultant$ | async as consultant">
       <mat-card-header>
         <mat-card-title
           >{{ consultant.firstName }}
@@ -17,7 +17,7 @@
         </button></mat-card-actions
       >
     </mat-card>
-    <mat-card class="conView" *ngIf="consultant$ | async as consultant">
+    <mat-card class="comment" *ngIf="consultant$ | async as consultant">
       <mat-card-content>
         <mat-card-title>Comments</mat-card-title>
         <div class="scroll">
@@ -35,16 +35,6 @@
         <mat-card-actions class="center">
           <button class="button-grey" mat-raised-button (click)="addComment()">
             Add Comment
-          </button>
-
-          <button
-            style="margin: 7px"
-            (click)="deleteConsultant(consultant._id)"
-            type="submit"
-            mat-raised-button
-            color="warn"
-          >
-            Delete Consultant
           </button>
         </mat-card-actions>
       </mat-card-content>
