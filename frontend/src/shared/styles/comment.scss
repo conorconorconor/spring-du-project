@@ -2,12 +2,25 @@
   width: 100%;
 }
 
-.conView.mat-card {
+.consultant.mat-card {
   display: block;
   position: relative;
   margin: 50px;
   padding: relative;
   border-radius: 4px;
+  height: 10%;
+  width: auto;
+  text-align: center;
+  //   text-align: center;
+}
+
+.comment.mat-card {
+  display: block;
+  position: relative;
+  margin: 50px;
+  padding: relative;
+  border-radius: 4px;
+  width: 80%;
   //   text-align: center;
 }
 
@@ -24,8 +37,8 @@
 }
 
 .scroll {
-  overflow: scroll;
-  height: 250px;
+  overflow: auto;
+  height: 300px;
 }
 
 .material-icons.md-18 {
