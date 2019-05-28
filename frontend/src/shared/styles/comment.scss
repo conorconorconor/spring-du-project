@@ -2,13 +2,22 @@
   width: 100%;
 }
 
-.conView.mat-card {
+.consultant.mat-card {
   display: block;
   position: relative;
-  margin: 50px;
+  margin: 25px;
   padding: relative;
   border-radius: 4px;
-  //   text-align: center;
+  width: auto;
+}
+
+.comment.mat-card {
+  display: block;
+  position: relative;
+  margin: 25px;
+  padding: relative;
+  border-radius: 4px;
+  width: auto;
 }
 
 .center {
@@ -17,13 +26,33 @@
   padding: 10px;
 }
 
+.button-grey {
+  color: white;
+  background-color: #4c4c4c;
+  margin: 7px;
+}
+
 .scroll {
-  overflow: scroll;
-  height: 250px;
+  overflow: auto;
+  height: 300px;
 }
 
 .material-icons.md-18 {
   font-size: 18px;
+}
+
+.mat-card-title {
+  color: #568d40;
+  font-size: 20pt;
+  margin-bottom: 10px;
+}
+
+.conView.mat-card {
+  display: block;
+  position: relative;
+  margin: 10px 30px;
+  padding: relative;
+  border: none !important;
 }
 
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");

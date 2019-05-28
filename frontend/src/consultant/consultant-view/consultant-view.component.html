@@ -1,44 +1,43 @@
-<mat-card class="conView" *ngIf="consultant$ | async as consultant">
-  <mat-card-header>
-    <mat-card-title
-      ><mat-icon mat-list-icon>person</mat-icon>{{ consultant.firstName }}
-      {{ consultant.lastName }}</mat-card-title
-    >
-    <mat-card-subtitle>Role: {{ consultant.role }}</mat-card-subtitle>
-    <mat-card-subtitle>Title: {{ consultant.title }}</mat-card-subtitle>
-    <mat-card-subtitle>e-Mail: {{ consultant.email }}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-card-title>Comments</mat-card-title>
-    <div class="scroll">
-      <mat-list role="list">
-        <mat-list-item *ngFor="let comment of consultant.comments"
-          ><mat-icon mat-list-icon class="material-icons.md-18"
-            >comment</mat-icon
-          >
-          <h4 mat-line>{{ comment.text }}</h4>
-          <p mat-line>{{ comment.publishDate | date: "shortDate" }}</p>
-        </mat-list-item>
-      </mat-list>
-    </div>
+<div fxLayout="column">
+  <mat-card class="conView">
+    <mat-card class="consultant" *ngIf="consultant$ | async as consultant">
+      <mat-card-header>
+        <mat-card-title
+          >{{ consultant.firstName }}
+          {{ consultant.lastName }}
+        </mat-card-title>
 
-    <mat-card-actions class="center">
-      <button style="margin: 7px" mat-raised-button (click)="addComment()">
-        Add Comment
-      </button>
-      <button style="margin: 7px" mat-raised-button>Remove From Team</button>
-      <button style="margin: 7px" type="submit" mat-raised-button>
-        Edit Consultant
-      </button>
-      <button
-        style="margin: 7px"
-        (click)="deleteConsultant(consultant._id)"
-        type="submit"
-        mat-raised-button
-        color="warn"
+        <mat-card-subtitle>{{ consultant.role }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ consultant.title }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ consultant.email }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions class="center"
+        ><button class="button-grey" mat-raised-button>
+          Remove From Team
+        </button></mat-card-actions
       >
-        Delete Consultant
-      </button>
-    </mat-card-actions>
-  </mat-card-content>
-</mat-card>
+    </mat-card>
+    <mat-card class="comment" *ngIf="consultant$ | async as consultant">
+      <mat-card-content>
+        <mat-card-title>Comments</mat-card-title>
+        <div class="scroll">
+          <mat-list role="list">
+            <mat-list-item *ngFor="let comment of consultant.comments"
+              ><mat-icon mat-list-icon class="material-icons.md-18"
+                >comment</mat-icon
+              >
+              <h4 mat-line>{{ comment.text }}</h4>
+              <p mat-line>{{ comment.publishDate | date: "shortDate" }}</p>
+            </mat-list-item>
+          </mat-list>
+        </div>
+
+        <mat-card-actions class="center">
+          <button class="button-grey" mat-raised-button (click)="addComment()">
+            Add Comment
+          </button>
+        </mat-card-actions>
+      </mat-card-content>
+    </mat-card>
+  </mat-card>
+</div>

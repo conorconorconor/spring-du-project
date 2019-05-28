@@ -1,6 +1,32 @@
+@import "./_colors.scss";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+table {
+  text-align: center !important;
+  width: 100%;
+}
+
+mat-header-cell, mat-cell {
+  justify-content: center;
+
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: lightgrey;
+}
+
+/* offsets the header by the same amount of size/padding the sort button occupies */
+.mat-sort-header-container {
+  margin-left: 18px;
+}
+
+.mat-row, .mat-header-row {
+  border-bottom-width: 0px;
+}
+
 table {
   width: 100%;
 }
+
 
 .mat-form-field {
   font-size: 14px;
@@ -25,3 +51,42 @@ table {
 .nested-link {
   z-index: 1;
 }
+
+.conView.mat-card {
+  display: block;
+  position: relative;
+  margin: 10px 40px;
+  padding: relative;
+  border-radius: 4px;
+  // text-align: center;
+}
+
+.mat-header-cell {
+  color: $primary;
+  font-size: 120%;
+  text-shadow: 1px 1px 2px whitesmoke;
+  text-align: center;
+}
+
+.mat-card-title {
+  color: #568d40;
+  font-size: 160%;
+  // text-shadow: 1px 1px 2px whitesmoke;
+  margin-bottom: 10px;
+}
+
+// .mat-paginator-navigation-previous {
+//   color: #568d40;
+// }
+
+// .mat-paginator-navigation-next {
+//   color: #568d40;
+// }
+
+.button-grey {
+  color: whitesmoke;
+  background-color: #4c4c4c;
+  margin: 7px;
+  z-index: 1;
+}
+

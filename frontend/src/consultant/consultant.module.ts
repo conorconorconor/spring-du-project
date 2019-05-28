@@ -13,32 +13,34 @@ import {
   MatDialog,
   MatDialogModule,
   MatListModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSortModule
 } from "@angular/material";
 import { ConsultantComponent } from "./consultant.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { ConsultantViewComponent } from "./consultant-view/consultant-view.component";
 import { ConsultantCreateComponent } from "./consultant-create/consultant-create.component";
-import { ConsultantEditComponent } from "./consultant-edit/consultant-edit.component";
 import { CommentComponent } from "./comment/comment.component";
 import { DeleteComponent } from "./delete/delete.component";
 import { ScrollDispatchModule } from "@angular/cdk/scrolling";
+import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatIconModule } from "@angular/material/icon";
-import { ConsultantTableComponent } from './consultant-table/consultant-table.component';
+import { ConsultantTableComponent } from "./consultant-table/consultant-table.component";
+
 
 @NgModule({
   declarations: [
     ConsultantComponent,
     ConsultantViewComponent,
     ConsultantCreateComponent,
-    ConsultantEditComponent,
     DeleteComponent,
     CommentComponent,
     ConsultantTableComponent
   ],
   imports: [
     CommonModule,
+    FlexLayoutModule,
     MatRadioModule,
     MatInputModule,
     MatFormFieldModule,
@@ -55,15 +57,14 @@ import { ConsultantTableComponent } from './consultant-table/consultant-table.co
     MatListModule,
     ScrollDispatchModule,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ],
   entryComponents: [
     CommentComponent,
     DeleteComponent,
     ConsultantCreateComponent
   ],
-  exports: [
-    ConsultantComponent
-  ]
+  exports: [ConsultantComponent]
 })
 export class ConsultantModule {}

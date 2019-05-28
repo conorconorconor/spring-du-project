@@ -2,65 +2,65 @@
   <div fxLayout="row">
     <div fxFlex></div>
     <div [hidden]="loggedInUser" fxFlex class="home-login">
-      <h3>Team Manager Sign Up</h3>
-
-      <form
-        (ngSubmit)="createUser(userSignUpForm)"
-        #userSignUpForm="ngForm"
-        fxLayout="column"
-      >
-        <mat-form-field>
-          <input
-            [(ngModel)]="user.firstName"
-            type="text"
-            id="firstName"
-            name="firstName"
-            matInput
-            required
-            placeholder="First Name"
-          /> </mat-form-field
-        ><mat-form-field>
-          <input
-            [(ngModel)]="user.lastName"
-            type="text"
-            id="lastName"
-            name="lastName"
-            matInput
-            required
-            placeholder="Last Name"
-          /> </mat-form-field
-        ><mat-form-field>
-          <input
-            [(ngModel)]="user.username"
-            type="text"
-            id="username"
-            name="username"
-            matInput
-            required
-            placeholder="Username"
-          />
-        </mat-form-field>
-        <mat-form-field>
-          <input
-            [(ngModel)]="user.password"
-            type="password"
-            id="password"
-            name="password"
-            matInput
-            required
-            placeholder="Password"
-          />
-        </mat-form-field>
-        <button
-          style="margin: 7px"
-          type="submit"
-          mat-raised-button
-          color="primary"
-          class="home-login-button"
+      <mat-card>
+        <form
+          (ngSubmit)="createUser(userSignUpForm)"
+          #userSignUpForm="ngForm"
+          fxLayout="column"
         >
-          Sign Up
-        </button>
-      </form>
+          <mat-form-field>
+            <input
+              [(ngModel)]="user.firstName"
+              type="text"
+              id="firstName"
+              name="firstName"
+              matInput
+              required
+              placeholder="First Name"
+            /> </mat-form-field
+          ><mat-form-field>
+            <input
+              [(ngModel)]="user.lastName"
+              type="text"
+              id="lastName"
+              name="lastName"
+              matInput
+              required
+              placeholder="Last Name"
+            /> </mat-form-field
+          ><mat-form-field>
+            <input
+              [(ngModel)]="user.username"
+              type="text"
+              id="username"
+              name="username"
+              matInput
+              required
+              placeholder="Username"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              [(ngModel)]="user.password"
+              type="password"
+              id="password"
+              name="password"
+              matInput
+              required
+              placeholder="Password"
+            />
+          </mat-form-field>
+          <button
+            style="margin: 7px"
+            type="submit"
+            mat-raised-button
+            color="primary"
+            class="home-login-button"
+          >
+            Sign Up
+          </button>
+        </form>
+      </mat-card>
     </div>
     <div fxFlex></div>
   </div>
