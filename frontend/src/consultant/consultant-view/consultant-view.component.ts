@@ -14,7 +14,7 @@ import { DeleteComponent } from "../delete/delete.component";
   styleUrls: ["../../shared/styles/comment.scss"]
 })
 export class ConsultantViewComponent implements OnInit {
-  public consultant$: Observable<Consultant>;
+  public consultant: Consultant;
   private id: string = this.route.snapshot.paramMap.get("id");
   public delete: boolean = false;
 
@@ -34,7 +34,9 @@ export class ConsultantViewComponent implements OnInit {
   }
 
   updateConsultant() {
-    this.consultant$ = this.consultantService.getConsultantById(this.id);
+    this.consultantService.getConsultantById(this.id).subscribe(result => {
+      this.consultant = result;
+    });
   }
 
   deleteConsultant(id: string): void {
@@ -55,7 +57,9 @@ export class ConsultantViewComponent implements OnInit {
     });
     dialog.afterClosed().subscribe((result: ConsultantComment) => {
       if (result.text) {
-        this.consultant$ = this.consultantService.addComment(this.id, result);
+        this.consultantService.addComment(this.id, result).subscribe(result => {
+          this.consultant = result;
+        });
       }
     });
   }

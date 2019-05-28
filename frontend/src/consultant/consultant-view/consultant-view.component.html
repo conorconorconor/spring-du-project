@@ -1,6 +1,6 @@
 <div fxLayout="column">
   <mat-card class="conView">
-    <mat-card class="consultant" *ngIf="consultant$ | async as consultant">
+    <mat-card class="consultant" *ngIf="consultant">
       <mat-card-header>
         <mat-card-title
           >{{ consultant.firstName }}
@@ -17,7 +17,7 @@
         </button></mat-card-actions
       >
     </mat-card>
-    <mat-card class="comment" *ngIf="consultant$ | async as consultant">
+    <mat-card class="comment" *ngIf="consultant">
       <mat-card-content>
         <mat-card-title>Comments</mat-card-title>
         <div class="scroll">
