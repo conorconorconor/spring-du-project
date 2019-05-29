@@ -38,8 +38,9 @@
               <mat-card-content
                 ><mat-icon mat-list-icon class="material-icons.md-18"
                   >comment</mat-icon
-                >&nbsp;&nbsp;{{ comment.text }}</mat-card-content
-              >
+                >&nbsp;&nbsp;
+                <pre class="comment-text">{{ comment.text }}</pre>
+              </mat-card-content>
               <mat-card-subtitle>
                 {{ comment.author }} -
                 {{ comment.publishDate | date: "shortDate" }}
