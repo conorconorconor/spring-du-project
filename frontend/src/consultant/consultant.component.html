@@ -83,10 +83,10 @@
       ></mat-row>
     </mat-table>
   </div>
-  <div *ngIf="noResults$ | async">
+  <div class="no-results" *ngIf="noResults$ | async">
     <br />
     <br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No results found!
+No results found!
   </div>
   <mat-paginator
     [pageSize]="10"
