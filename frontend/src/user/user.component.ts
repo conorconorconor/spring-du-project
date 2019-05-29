@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { Consultant } from "src/consultant/consultant";
 import { UserService } from "./user.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Observable, Subscription } from "rxjs";
+import { Observable, Subscription, Subject } from "rxjs";
 import { AuthService } from "src/services/auth.service";
 import { User } from "./user";
 import { MatTableDataSource, MatSort } from "@angular/material";
@@ -62,8 +62,13 @@ export class UserComponent implements OnInit {
     });
   }
 
-  applyFilter(filterValue: string) {
+  private noResults$ = new Subject<boolean>();
+
+  public applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-    console.log(this.dataSource.filter);
+
+    this.noResults$.next(
+      this.dataSource.filteredData.length === 0
+    );
   }
 }

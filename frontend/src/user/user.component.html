@@ -70,5 +70,10 @@
       >
       </mat-row>
     </mat-table>
+    <div *ngIf="noResults$ | async">
+        <br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No results found!
+      </div>
   </div>
 </mat-card>
