@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Observable, Subscription, Subject } from "rxjs";
 import { AuthService } from "src/services/auth.service";
 import { User } from "./user";
-import { MatTableDataSource, MatSort } from "@angular/material";
+import { MatTableDataSource, MatSort, MatSnackBar } from "@angular/material";
 
 @Component({
   selector: "app-user",
@@ -33,7 +33,8 @@ export class UserComponent implements OnInit {
     private userService: UserService,
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackbar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -44,7 +45,7 @@ export class UserComponent implements OnInit {
     });
     this.dataSource.sort = this.sort;
   }
-  
+
   getUser() {
     this.user$ = this.authService.getUser();
   }
@@ -55,11 +56,25 @@ export class UserComponent implements OnInit {
 
   removeFromTeam(e: Event, consultant: Consultant): void {
     e.stopPropagation();
-    this.userService.removeConsultant(consultant).subscribe(user => {
-      this.consultants = user.consultants;
-      this.dataSource.data = this.consultants;
-      console.log(this.consultants);
-    });
+    this.userService.removeConsultant(consultant).subscribe(
+      user => {
+        this.consultants = user.consultants;
+        this.dataSource.data = this.consultants;
+        console.log(this.consultants);
+
+        this.snackbar.open("Removed from Team", "", {
+          duration: 3000,
+          verticalPosition: "top",
+          panelClass: ["green-snackbar"]
+        });
+      },
+      err => {
+        this.snackbar.open(err.message, "", {
+          duration: 3000,
+          verticalPosition: "top"
+        });
+      }
+    );
   }
 
   private noResults$ = new Subject<boolean>();
@@ -67,8 +82,6 @@ export class UserComponent implements OnInit {
   public applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    this.noResults$.next(
-      this.dataSource.filteredData.length === 0
-    );
+    this.noResults$.next(this.dataSource.filteredData.length === 0);
   }
 }
