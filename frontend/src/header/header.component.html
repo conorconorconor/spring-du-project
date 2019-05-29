@@ -5,6 +5,9 @@
 
   <div fxFlex></div>
   <div *ngIf="checkLogin(true)">
+    <!-- <div *ngIf="user$ | async as user">
+      {{ user.username }}
+    </div> -->
     <a mat-button [routerLink]="['/user']" class="app-header-link">
       My Consultants
     </a>
@@ -13,9 +16,18 @@
       All Consultants
     </a>
     <div fxFlex="1"></div>
-    <button mat-button class="app-header-link" (click)="logout()">
+    <!-- <button mat-button class="app-header-link" (click)="logout()">
+      Logout
+    </button> -->
+
+    <button mat-button class="app-header-link" [matMenuTriggerFor]="menu">
       Logout
     </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngIf="user$ | async as user" (click)="logout()">
+        Logout {{ user.username }}
+      </button>
+    </mat-menu>
     <div fxFlex="1"></div>
   </div>
 </nav>

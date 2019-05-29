@@ -11,19 +11,19 @@
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
   padding: 0 1em;
   &-brand {
-    padding: 10px;
+    padding: 3px;
     width: 200px;
-    height: auto;
+    height: 50px;
     img {
       height: auto;
-      width: 200px;
+      width: 150px;
     }
   }
   &-link {
     font-weight: 500;
     line-height: 3.5;
     font-size: 1.077em;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
     color: whitesmoke;
   }
