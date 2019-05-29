@@ -52,7 +52,7 @@
         >
         <mat-cell *matCellDef="let consultant">
           <div *ngIf="consultant.teamManager; else noTM">
-            {{ consultant.teamManager.firstName }}
+            {{ consultant.teamManager.firstName }} {{ consultant.teamManager.lastName }}
           </div>
           <ng-template #noTM>N/A</ng-template>
         </mat-cell>
