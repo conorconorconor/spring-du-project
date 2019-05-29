@@ -65,9 +65,14 @@ export class ConsultantViewComponent implements OnInit {
   }
 
   removeFromTeam(consultant: Consultant) {
-    this.userService.removeConsultant(consultant).subscribe(result => {
-      this.router.navigate(["user"]);
-    });
+    let dialogRef = this.dialog.open(DeleteComponent);
+    dialogRef.afterClosed().subscribe(result=> {
+      if (result){
+        this.userService.removeConsultant(consultant).subscribe(result => {
+          this.router.navigate(["user"]);
+        });
+      }
+    })
   }
 
   addComment(): void {
