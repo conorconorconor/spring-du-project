@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { Consultant } from "../consultant";
 import { ConsultantService } from "../consultant.service";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -8,6 +8,7 @@ import { CommentComponent } from "../comment/comment.component";
 import { ConsultantComment } from "../comment";
 import { DeleteComponent } from "../delete/delete.component";
 import { UserService } from "src/user/user.service";
+import { AuthService } from "src/services/auth.service";
 
 @Component({
   selector: "app-consultant-view",
@@ -17,34 +18,50 @@ import { UserService } from "src/user/user.service";
 export class ConsultantViewComponent implements OnInit {
   public consultant: Consultant;
   private id: string = this.route.snapshot.paramMap.get("id");
+  private tmId: string = "none";
   public delete: boolean = false;
+  public userSub: Subscription;
+  public onTeam: boolean = false;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private consultantService: ConsultantService,
     public dialog: MatDialog,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
     this.updateConsultant();
   }
 
-  ngOnChanges() {
-    this.updateConsultant();
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.userSub && this.userSub.unsubscribe();
   }
 
   updateConsultant() {
     this.consultantService.getConsultantById(this.id).subscribe(result => {
       this.consultant = result;
+      console.log(this.consultant.teamManager);
+      if (this.consultant.teamManager) {
+        this.tmId = this.consultant.teamManager._id;
+      }
+      this.authService.getUser().subscribe(user => {
+        if (this.tmId === user._id) {
+          this.onTeam = true;
+        }
+        console.log(this.onTeam);
+        console.log(this.tmId);
+      });
     });
   }
 
   deleteConsultant(id: string): void {
     let dialog = this.dialog.open(DeleteComponent);
     dialog.afterClosed().subscribe(result => {
-      console.log(result);
       if (result) {
         this.consultantService.deleteConsultant(id).subscribe();
         this.router.navigate(["/consultants"]);
