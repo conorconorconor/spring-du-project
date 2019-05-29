@@ -46,7 +46,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     FlexLayoutModule,
     MatPaginatorModule,
     UserRoutingModule,
-    // MatSortModule
+    MatSortModule
   ],
   exports: [UserCreateComponent]
 })

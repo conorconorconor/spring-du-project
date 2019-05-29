@@ -26,8 +26,6 @@ import { DeleteComponent } from "./delete/delete.component";
 import { ScrollDispatchModule } from "@angular/cdk/scrolling";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatIconModule } from "@angular/material/icon";
-import { ConsultantTableComponent } from "./consultant-table/consultant-table.component";
-
 
 @NgModule({
   declarations: [
@@ -36,7 +34,6 @@ import { ConsultantTableComponent } from "./consultant-table/consultant-table.co
     ConsultantCreateComponent,
     DeleteComponent,
     CommentComponent,
-    ConsultantTableComponent
   ],
   imports: [
     CommonModule,

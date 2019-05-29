@@ -8,7 +8,6 @@ import { Credentials } from "../models/credentials";
 @Service()
 export class TeamManagerService {
   public async createTeamManager(tm: ITeamManager): Promise<ITeamManager> {
-    // return "Make a TM";
     let exists = await this.usernameExists(tm.username);
     if (!exists) {
       const newTM = new TeamManager(tm);
@@ -19,12 +18,10 @@ export class TeamManagerService {
   }
 
   public deleteTeamManager(id: string): void {
-    // return "Delete a TM";
     TeamManager.findByIdAndDelete(id).exec();
   }
 
   public getTeamManagerById(id: string): Promise<ITeamManager> {
-    // return "Return a single TM";
     return TeamManager.findById(id)
       .populate("consultants")
       .exec();
@@ -45,7 +42,6 @@ export class TeamManagerService {
 
   //login a TM
   public async validateLogin(credentials: Credentials): Promise<boolean> {
-    // return "Validate credentials for login";
     let isValid = false;
     let tm = await TeamManager.findOne({
       username: credentials.username,
@@ -59,7 +55,6 @@ export class TeamManagerService {
 
   //add a consultant to a TM
   public async addConsultant(consultantId: string, tmId: string) {
-    // return "Add a consultant to this TM";
     let tm: ITeamManager = await this.getTeamManagerById(tmId);
     let newConsultant: IConsultant;
     if (this.onTeam(tm, consultantId) === -1) {
@@ -83,7 +78,6 @@ export class TeamManagerService {
 
   //remove a consultant from a TM
   public async removeConsultant(consultantId: string, tmId: string) {
-    // return "Remove a consultant from this TM";
     let tm: ITeamManager;
     tm = await this.getTeamManagerById(tmId);
     let idx: number = this.onTeam(tm, consultantId);

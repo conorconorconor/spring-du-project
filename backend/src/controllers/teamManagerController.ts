@@ -41,16 +41,6 @@ export class TeamManagerController {
     }
   }
 
-  // @Get("/users/:id")
-  // public getTmConsultants(
-  //   @Param("id") id: string,
-  //   @QueryParam("consultants") getConsultants: boolean
-  // ): Promise<IConsultant[]> {
-  //   if (getConsultants) {
-  //     return this.tmService.getTmConsultants(id);
-  //   }
-  // }
-
   //POST: create a new TM
   @Post("/users")
   public createTeamManager(@Body() tm: ITeamManager) {

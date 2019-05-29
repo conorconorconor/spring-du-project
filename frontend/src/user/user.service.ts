@@ -37,13 +37,6 @@ export class UserService {
     return this.http.get<User>(`/api/users/${this.user._id}`);
   }
 
-  // public addConsultant(user: User, consultantId: string) {
-  //   return this.http.put<User>(
-  //     `/api/users/add/${user._id}?consultantId=${consultantId}`,
-  //     {}
-  //   );
-  // }
-
   public addConsultant(consultant: Consultant) {
     return this.user$.pipe(
       map(user => {
@@ -65,15 +58,7 @@ export class UserService {
         return user;
       })
     );
-    // return this.http.put<User>(`/api/users/add/${this.user._id}?consultantId=${consultant._id}`, {})
   }
-
-  // public removeConsultant(user: User, consultantId: string): Observable<User> {
-  //   return this.http.put<User>(
-  //     `/api/users/remove/${user._id}?consultantId=${consultantId}`,
-  //     {}
-  //   );
-  // }
 
   public removeConsultant(consultant: Consultant) {
     return this.user$.pipe(
