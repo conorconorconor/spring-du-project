@@ -17,7 +17,6 @@
         <mat-card-subtitle>{{ consultant.email }}</mat-card-subtitle>
       </mat-card-header>
     </div>
-
     <mat-card-content *ngIf="consultant.comments.length">
       <mat-card-title>&nbsp;Comments</mat-card-title>
       <div class="scroll">
@@ -35,19 +34,17 @@
             </mat-card-subtitle>
           </mat-card>
         </mat-list>
-      </div>
-
-      <mat-card-actions *ngIf="onTeam" class="center">
-        <button class="button-grey" mat-raised-button (click)="addComment()">
-          Add Comment</button
-        ><button
-          (click)="removeFromTeam(consultant)"
-          class="button-grey"
-          mat-raised-button
-        >
-          Remove From Team
-        </button>
-      </mat-card-actions>
-    </mat-card-content>
+      </div> </mat-card-content
+    ><mat-card-actions *ngIf="onTeam" class="center">
+      <button class="button-grey" mat-raised-button (click)="addComment()">
+        Add Comment</button
+      ><button
+        (click)="removeFromTeam(consultant)"
+        class="button-grey"
+        mat-raised-button
+      >
+        Remove From Team
+      </button>
+    </mat-card-actions>
   </mat-card>
 </div>
