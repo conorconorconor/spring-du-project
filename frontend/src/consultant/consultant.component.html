@@ -8,6 +8,9 @@
         placeholder="Search"
       />
     </mat-form-field>
+    <mat-card *ngIf="noResults$ | async">
+      No results found!
+    </mat-card>
     <mat-table [dataSource]="dataSource" class="mat-elevation-z4" matSort>
       <!-- Last Name Column -->
       <ng-container matColumnDef="lastName">
@@ -52,7 +55,8 @@
         >
         <mat-cell *matCellDef="let consultant">
           <div *ngIf="consultant.teamManager; else noTM">
-            {{ consultant.teamManager.firstName }} {{ consultant.teamManager.lastName }}
+            {{ consultant.teamManager.firstName }}
+            {{ consultant.teamManager.lastName }}
           </div>
           <ng-template #noTM>N/A</ng-template>
         </mat-cell>
@@ -87,4 +91,5 @@
     showFirstLastButtons
   ></mat-paginator>
 </mat-card>
+
 <button (click)="createConsultant()" mat-raised-button>NEw boy</button>
