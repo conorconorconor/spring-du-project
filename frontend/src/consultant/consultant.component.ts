@@ -81,6 +81,10 @@ export class ConsultantComponent implements OnInit {
           verticalPosition: "top"
         })
     );
+    this.getConsultants();
+    this.consultants$.subscribe(results => {
+      this.dataSource.data = results;
+    });
   }
 
   removeFromTeam(e: Event, consultant: Consultant): void {
@@ -108,7 +112,6 @@ export class ConsultantComponent implements OnInit {
   public createConsultant(): void {
     let dialog = this.dialog.open(ConsultantCreateComponent);
     dialog.afterClosed().subscribe(result => {
-      console.log(result);
       if (result) {
         this.consultantService
           .createConsultant(result)
