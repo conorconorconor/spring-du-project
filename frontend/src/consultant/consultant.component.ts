@@ -68,12 +68,14 @@ export class ConsultantComponent implements OnInit {
       () => {
         this.snackbar.open("Added to Team", "", {
           duration: 3000,
+          verticalPosition: "top",
           panelClass: ["green-snackbar"]
         });
       },
       err =>
         this.snackbar.open(err, "", {
-          duration: 3000
+          duration: 3000,
+          verticalPosition: "top"
         })
     );
   }
