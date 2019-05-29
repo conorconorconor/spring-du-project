@@ -107,5 +107,4 @@ export class ConsultantComponent implements OnInit {
       this.dataSource.filteredData.length === 0
     );
   }
-  
 }

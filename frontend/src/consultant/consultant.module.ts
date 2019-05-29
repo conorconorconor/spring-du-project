@@ -22,7 +22,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { ConsultantViewComponent } from "./consultant-view/consultant-view.component";
 import { ConsultantCreateComponent } from "./consultant-create/consultant-create.component";
 import { CommentComponent } from "./comment/comment.component";
-import { DeleteComponent } from "./consultant-view/delete/delete.component";
+import { DeleteComponent } from "./delete/delete.component";
 import { ScrollDispatchModule } from "@angular/cdk/scrolling";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatIconModule } from "@angular/material/icon";
