@@ -50,5 +50,7 @@ body {
 }
 .green-snackbar {
   background: green;
-  text-align: center;
+  text-align: center !important;
+  justify-content: center;
+  margin: auto;
 }

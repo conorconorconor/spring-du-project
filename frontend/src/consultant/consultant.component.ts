@@ -65,6 +65,12 @@ export class ConsultantComponent implements OnInit {
     this.consultants$ = this.consultantService.getConsultants();
   }
 
+  updateConsultants(): void {
+    this.consultantService.getConsultants().subscribe(results => {
+      this.dataSource.data = results;
+    });
+  }
+
   addToTeam(e: Event, consultant: Consultant) {
     e.stopPropagation();
     this.userService.addConsultant(consultant).subscribe(
@@ -74,17 +80,16 @@ export class ConsultantComponent implements OnInit {
           verticalPosition: "top",
           panelClass: ["green-snackbar"]
         });
+        this.updateConsultants();
       },
-      err =>
+      err => {
         this.snackbar.open(err.message, "", {
           duration: 3000,
           verticalPosition: "top"
-        })
+        });
+        this.updateConsultants();
+      }
     );
-    this.getConsultants();
-    this.consultants$.subscribe(results => {
-      this.dataSource.data = results;
-    });
   }
 
   removeFromTeam(e: Event, consultant: Consultant): void {
@@ -96,12 +101,15 @@ export class ConsultantComponent implements OnInit {
           verticalPosition: "top",
           panelClass: ["green-snackbar"]
         });
+        this.updateConsultants();
       },
-      err =>
+      err => {
         this.snackbar.open(err.message, "", {
           duration: 3000,
           verticalPosition: "top"
-        })
+        });
+        this.updateConsultants();
+      }
     );
   }
 

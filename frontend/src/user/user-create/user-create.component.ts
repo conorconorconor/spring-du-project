@@ -28,6 +28,7 @@ export class UserCreateComponent implements OnInit {
         this.router.navigate(["/"]);
         this.snackBar.open("User Created", "", {
           duration: 3000,
+          verticalPosition: "top",
           panelClass: ["green-snackbar"]
         });
       });

@@ -27,7 +27,8 @@ export class HomeComponent {
         this.router.navigate(["consultants"]);
       } catch (e) {
         this.snackBar.open("Invalid Login", "", {
-          duration: 3000
+          duration: 3000,
+          verticalPosition: "top"
         });
       }
     }

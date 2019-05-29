@@ -53,7 +53,7 @@ export class UserService {
             )
             .subscribe();
         } else {
-          throw new Error("Consultant already on team");
+          throw new Error("Consultant Already on Team");
         }
         return user;
       })
