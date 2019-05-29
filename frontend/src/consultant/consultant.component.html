@@ -8,6 +8,7 @@
         placeholder="Search"
       />
     </mat-form-field>
+
     <mat-table [dataSource]="dataSource" class="mat-elevation-z4" matSort>
       <!-- Last Name Column -->
       <ng-container matColumnDef="lastName">
@@ -98,10 +99,16 @@
       ></mat-row>
     </mat-table>
   </div>
+  <div class="no-results" *ngIf="noResults$ | async">
+    <br />
+    <br />
+No results found!
+  </div>
   <mat-paginator
     [pageSize]="10"
     [pageSizeOptions]="[5, 10, 20]"
     showFirstLastButtons
   ></mat-paginator>
 </mat-card>
+
 <button (click)="createConsultant()" mat-raised-button>NEw boy</button>

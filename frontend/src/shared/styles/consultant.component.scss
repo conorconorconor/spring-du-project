@@ -1,13 +1,14 @@
 @import "./_colors.scss";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 
 table {
   text-align: center !important;
   width: 100%;
 }
 
-mat-header-cell, mat-cell {
+mat-header-cell,
+mat-cell {
   justify-content: center;
 
   border-bottom-width: 1px;
@@ -20,7 +21,8 @@ mat-header-cell, mat-cell {
   margin-left: 18px;
 }
 
-.mat-row, .mat-header-row {
+.mat-row,
+.mat-header-row {
   border-bottom-width: 0px;
 }
 
@@ -87,3 +89,7 @@ mat-header-cell, mat-cell {
   z-index: 1;
 }
 
+.no-results {
+  color: #aa091b;
+  text-align: center;
+}
