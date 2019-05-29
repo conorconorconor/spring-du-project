@@ -23,16 +23,14 @@ export class HomeComponent {
   // TODO: Bind login to button
   public async login(): Promise<void> {
     if (this.credentials.username && this.credentials.password) {
-      await this.authService
-        .login(this.credentials)
-        .then(() => {
-          this.router.navigate(["consultants"]);
-        })
-        .catch(err => {
-          this.snackBar.open("Invalid Login", "", {
-            duration: 3000
-          });
+      try {
+        await this.authService.login(this.credentials);
+        this.router.navigate(["consultants"]);
+      } catch (e) {
+        this.snackBar.open("Invalid Login", "", {
+          duration: 3000
         });
+      }
     }
   }
 }

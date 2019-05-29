@@ -47,7 +47,10 @@ export class UserService {
   public addConsultant(consultant: Consultant) {
     return this.user$.pipe(
       map(user => {
-        if (this.findConsultant(consultant._id) === -1) {
+        if (
+          this.findConsultant(consultant._id) === -1 &&
+          !consultant.teamManager
+        ) {
           user.consultants.push(consultant);
           this.localStorage.setItem("user", JSON.stringify(user));
           this.http
