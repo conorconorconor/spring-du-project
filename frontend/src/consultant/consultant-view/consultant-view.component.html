@@ -18,7 +18,7 @@
       </mat-card-header>
     </div>
 
-    <mat-card-content>
+    <mat-card-content *ngIf="consultant.comments.length">
       <mat-card-title>&nbsp;Comments</mat-card-title>
       <div class="scroll">
         <mat-list role="list">
