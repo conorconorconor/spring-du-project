@@ -8,7 +8,7 @@ import { Credentials } from "src/app/models/credentials";
 
 @Injectable()
 export class AuthService {
-  private userSubject = new ReplaySubject<User>();
+  private userSubject = new ReplaySubject<User>(1);
   public redirectUrl: string;
   public user$ = this.userSubject.asObservable();
 
