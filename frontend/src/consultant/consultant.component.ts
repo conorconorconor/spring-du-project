@@ -37,6 +37,7 @@ export class ConsultantComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   public loggedInUserSub: Subscription;
+  public userId: string;
 
   constructor(
     private consultantService: ConsultantService,
@@ -54,7 +55,10 @@ export class ConsultantComponent implements OnInit {
     this.consultants$.subscribe(results => {
       this.dataSource.data = results;
     });
-    this.loggedInUserSub = this.authService.getUser().subscribe();
+    this.loggedInUserSub = this.authService.getUser().subscribe(result => {
+      this.userId = result._id;
+      console.log(this.userId);
+    });
   }
 
   getConsultants(): void {
@@ -66,6 +70,24 @@ export class ConsultantComponent implements OnInit {
     this.userService.addConsultant(consultant).subscribe(
       () => {
         this.snackbar.open("Added to Team", "", {
+          duration: 3000,
+          verticalPosition: "top",
+          panelClass: ["green-snackbar"]
+        });
+      },
+      err =>
+        this.snackbar.open(err.message, "", {
+          duration: 3000,
+          verticalPosition: "top"
+        })
+    );
+  }
+
+  removeFromTeam(e: Event, consultant: Consultant): void {
+    e.stopPropagation();
+    this.userService.removeConsultant(consultant).subscribe(
+      () => {
+        this.snackbar.open("Removed from Team", "", {
           duration: 3000,
           verticalPosition: "top",
           panelClass: ["green-snackbar"]

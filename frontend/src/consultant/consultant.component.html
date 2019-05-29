@@ -52,7 +52,8 @@
         >
         <mat-cell *matCellDef="let consultant">
           <div *ngIf="consultant.teamManager; else noTM">
-            {{ consultant.teamManager.firstName }} {{ consultant.teamManager.lastName }}
+            {{ consultant.teamManager.firstName }}
+            {{ consultant.teamManager.lastName }}
           </div>
           <ng-template #noTM>N/A</ng-template>
         </mat-cell>
@@ -63,13 +64,29 @@
           >Add to Your Team</mat-header-cell
         >
         <mat-cell *matCellDef="let consultant">
-          <i
-            (click)="addToTeam($event, consultant)"
-            class="material-icons"
-            style="color:#568d40"
+          <div
+            *ngIf="
+              consultant.teamManager && consultant.teamManager._id === userId;
+              else elseBlock
+            "
           >
-            add_circle
-          </i>
+            <i
+              (click)="removeFromTeam($event, consultant)"
+              class="material-icons"
+              style="color:#aa091b"
+            >
+              remove_circle
+            </i>
+          </div>
+          <ng-template #elseBlock>
+            <i
+              (click)="addToTeam($event, consultant)"
+              class="material-icons"
+              style="color:#568d40"
+            >
+              add_circle
+            </i>
+          </ng-template>
         </mat-cell>
       </ng-container>
 
