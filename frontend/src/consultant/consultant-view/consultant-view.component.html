@@ -6,22 +6,25 @@
           >{{ consultant.firstName }}
           {{ consultant.lastName }}
         </mat-card-title>
-
+        <mat-card-subtitle *ngIf="consultant.teamManager"
+          >Current TM: {{ consultant.teamManager.firstName }}
+          {{ consultant.teamManager.lastName }}</mat-card-subtitle
+        >
         <mat-card-subtitle>{{ consultant.role }}</mat-card-subtitle>
         <mat-card-subtitle>{{ consultant.title }}</mat-card-subtitle>
         <mat-card-subtitle>{{ consultant.email }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-      <mat-card-actions class="center"
-        ><button
-          (click)="removeFromTeam(consultant)"
-          class="button-grey"
-          mat-raised-button
-        >
-          Remove From Team
-        </button>
-      </mat-card-actions>
-    </mat-card-content>
+        <mat-card-actions class="center"
+          ><button
+            (click)="removeFromTeam(consultant)"
+            class="button-grey"
+            mat-raised-button
+          >
+            Remove From Team
+          </button>
+        </mat-card-actions>
+      </mat-card-content>
     </mat-card>
     <mat-card class="consultant" *ngIf="consultant">
       <mat-card-content>
@@ -51,8 +54,6 @@
           </button>
         </mat-card-actions>
       </mat-card-content>
-
     </mat-card>
-
   </mat-card>
 </div>
