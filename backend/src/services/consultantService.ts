@@ -21,6 +21,7 @@ export class ConsultantService {
     return Consultant.findById(id)
       .populate("comments")
       .populate("author")
+      .sort({ date: 1 })
       .exec();
   }
 
