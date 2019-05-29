@@ -1,60 +1,53 @@
-<div fxLayout="column">
-  <mat-card class="mat-elevation-z0">
-    <mat-card class="consultant" *ngIf="consultant">
+<div>
+  <mat-card class="consultant" *ngIf="consultant">
+    <div class="consultantInfo">
       <mat-card-header>
         <mat-card-title
           >{{ consultant.firstName }}
           {{ consultant.lastName }}
         </mat-card-title>
         <mat-card-subtitle *ngIf="consultant.teamManager"
-          >Current TM: {{ consultant.teamManager.firstName }}
-          {{ consultant.teamManager.lastName }}</mat-card-subtitle
+          ><h3>
+            Team Manager: {{ consultant.teamManager.firstName }}
+            {{ consultant.teamManager.lastName }}
+          </h3></mat-card-subtitle
         >
         <mat-card-subtitle>{{ consultant.role }}</mat-card-subtitle>
         <mat-card-subtitle>{{ consultant.title }}</mat-card-subtitle>
         <mat-card-subtitle>{{ consultant.email }}</mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content>
-        <mat-card-actions class="center"
-          ><button
-            (click)="removeFromTeam(consultant)"
-            class="button-grey"
-            mat-raised-button
-          >
-            Remove From Team
-          </button>
-        </mat-card-actions>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="consultant" *ngIf="consultant">
-      <mat-card-content>
-        <mat-card-title>&nbsp;&nbsp;Comments</mat-card-title>
-        <div class="scroll">
-          <mat-list role="list">
-            <mat-card
-              class="comment"
-              *ngFor="let comment of consultant.comments"
-            >
-              <mat-card-content
-                ><mat-icon mat-list-icon class="material-icons.md-18"
-                  >comment</mat-icon
-                >&nbsp;&nbsp;
-                <pre class="comment-text">{{ comment.text }}</pre>
-              </mat-card-content>
-              <mat-card-subtitle>
-                {{ comment.author }} -
-                {{ comment.publishDate | date: "shortDate" }}
-              </mat-card-subtitle>
-            </mat-card>
-          </mat-list>
-        </div>
+    </div>
 
-        <mat-card-actions class="center">
-          <button class="button-grey" mat-raised-button (click)="addComment()">
-            Add Comment
-          </button>
-        </mat-card-actions>
-      </mat-card-content>
-    </mat-card>
+    <mat-card-content>
+      <mat-card-title>&nbsp;Comments</mat-card-title>
+      <div class="scroll">
+        <mat-list role="list">
+          <mat-card class="comment" *ngFor="let comment of consultant.comments">
+            <mat-card-content
+              ><mat-icon mat-list-icon class="material-icons.md-18"
+                >comment</mat-icon
+              >&nbsp;&nbsp;
+              <pre class="comment-text">{{ comment.text }}</pre>
+            </mat-card-content>
+            <mat-card-subtitle>
+              {{ comment.author }} -
+              {{ comment.publishDate | date: "shortDate" }}
+            </mat-card-subtitle>
+          </mat-card>
+        </mat-list>
+      </div>
+
+      <mat-card-actions class="center">
+        <button class="button-grey" mat-raised-button (click)="addComment()">
+          Add Comment</button
+        ><button
+          (click)="removeFromTeam(consultant)"
+          class="button-grey"
+          mat-raised-button
+        >
+          Remove From Team
+        </button>
+      </mat-card-actions>
+    </mat-card-content>
   </mat-card>
 </div>
