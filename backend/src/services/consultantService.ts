@@ -21,7 +21,8 @@ export class ConsultantService {
   //returns a consultant with all of their comments
   public getConsultantById(id: string): Promise<IConsultant> {
     return Consultant.findById(id)
-      .populate("comments")
+      .populate({ path: "comments", options: { sort: { publishDate: -1 } } })
+      .populate("author")
       .populate("teamManager")
       .exec();
   }
