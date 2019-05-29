@@ -68,6 +68,11 @@ export class TeamManagerService {
           return Promise.reject("Consultant not found");
         }
       }).exec();
+      if (newConsultant.teamManager) {
+        return Promise.reject("This consultant is already on a team");
+      }
+      newConsultant.teamManager = tm;
+      await newConsultant.save();
       tm.consultants.push(newConsultant._id);
       await tm.save();
       return tm;
@@ -85,8 +90,13 @@ export class TeamManagerService {
     if (idx === -1) {
       return Promise.reject("Seems this consultant isn't on this team");
     } else {
+      let consultant = await Consultant.findById(consultantId).exec();
+      consultant.teamManager = undefined;
+      await consultant.save();
+
       tm.consultants.splice(idx, 1);
       await tm.save();
+
       return tm;
     }
   }

@@ -1,5 +1,6 @@
 @import "./_colors.scss";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import '~@angular/material/theming';
 
 table {
   text-align: center !important;
@@ -53,6 +54,7 @@ mat-header-cell, mat-cell {
   margin: 10px 40px;
   padding: relative;
   border-radius: 4px;
+  @include mat-elevation(9);
   // text-align: center;
 }
 

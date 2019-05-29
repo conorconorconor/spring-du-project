@@ -51,7 +51,10 @@
           >Current Team Manager</mat-header-cell
         >
         <mat-cell *matCellDef="let consultant">
-          link to current TM
+          <div *ngIf="consultant.teamManager; else noTM">
+            {{ consultant.teamManager.firstName }}
+          </div>
+          <ng-template #noTM>N/A</ng-template>
         </mat-cell>
       </ng-container>
       <!-- Add to Team Column -->
