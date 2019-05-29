@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { MatDialog } from "@angular/material";
 import { CommentComponent } from "../comment/comment.component";
 import { ConsultantComment } from "../comment";
-import { DeleteComponent } from "../delete/delete.component";
+import { DeleteComponent } from "./delete/delete.component";
 import { UserService } from "src/user/user.service";
 
 @Component({

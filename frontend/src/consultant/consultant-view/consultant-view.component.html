@@ -39,8 +39,11 @@
 
       <mat-card-actions class="center">
         <button class="button-grey" mat-raised-button (click)="addComment()">
-          Add Comment</button
-        ><button
+          Add Comment
+        </button>
+        <button class="button-grey" mat-raised-button (click)="verifyDelete()"> Remove From Team</button>
+
+        <button
           (click)="removeFromTeam(consultant)"
           class="button-grey"
           mat-raised-button
