@@ -19,8 +19,6 @@ constructor(private authService: AuthService, private router: Router) {}
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    // console.log("AuthGauard#canActivate called");
-    // return true;
     let url = state.url;
 
     return this.checkLogin(url);

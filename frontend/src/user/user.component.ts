@@ -37,28 +37,14 @@ export class UserComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.user = this.authService.getUserFromLocalStorage();
-    // console.log(this.user);
-    // this.userSub = this.authService.getUser().subscribe(user => {
-    //   this.dataSource.data = user.consultants;
-    //   console.log(user);
-    // });
     this.getUser();
     this.user$.subscribe(user => {
       console.log(user);
       this.dataSource.data = user.consultants;
     });
-    // this.dataSource.data = this.user.consultants;
     this.dataSource.sort = this.sort;
   }
-
-  // ngOnDestroy(): void {
-  //   //Called once, before the instance is destroyed.
-  //   //Add 'implements OnDestroy' to the class.
-  //   this.dataSource.data = [];
-  //   this.userSub && this.userSub.unsubscribe();
-  // }
-
+  
   getUser() {
     this.user$ = this.authService.getUser();
   }

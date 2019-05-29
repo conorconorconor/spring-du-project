@@ -20,7 +20,6 @@ export class HomeComponent {
     private snackBar: MatSnackBar
   ) {}
 
-  // TODO: Bind login to button
   public async login(): Promise<void> {
     if (this.credentials.username && this.credentials.password) {
       try {
