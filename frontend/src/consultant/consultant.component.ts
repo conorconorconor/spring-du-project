@@ -53,7 +53,6 @@ export class ConsultantComponent implements OnInit {
     this.getConsultants();
     this.consultants$.subscribe(results => {
       this.dataSource.data = results;
-      console.log(this.dataSource.data);
     });
     this.loggedInUserSub = this.authService.getUser().subscribe();
   }
@@ -73,7 +72,7 @@ export class ConsultantComponent implements OnInit {
         });
       },
       err =>
-        this.snackbar.open(err, "", {
+        this.snackbar.open(err.message, "", {
           duration: 3000,
           verticalPosition: "top"
         })

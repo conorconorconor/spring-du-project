@@ -37,7 +37,7 @@
         </mat-list>
       </div>
 
-      <mat-card-actions class="center">
+      <mat-card-actions *ngIf="onTeam" class="center">
         <button class="button-grey" mat-raised-button (click)="addComment()">
           Add Comment</button
         ><button
