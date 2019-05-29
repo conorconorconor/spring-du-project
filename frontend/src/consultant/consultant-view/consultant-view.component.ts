@@ -37,15 +37,12 @@ export class ConsultantViewComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
     this.userSub && this.userSub.unsubscribe();
   }
 
   updateConsultant() {
     this.consultantService.getConsultantById(this.id).subscribe(result => {
       this.consultant = result;
-      console.log(this.consultant.teamManager);
       if (this.consultant.teamManager) {
         this.tmId = this.consultant.teamManager._id;
       }
@@ -53,8 +50,6 @@ export class ConsultantViewComponent implements OnInit {
         if (this.tmId === user._id) {
           this.onTeam = true;
         }
-        console.log(this.onTeam);
-        console.log(this.tmId);
       });
     });
   }
