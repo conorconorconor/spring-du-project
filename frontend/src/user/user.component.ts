@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
   public consultants: Consultant[];
   public consultants$: Observable<Consultant[]>;
   public user$: Observable<User>;
-  private user: User;
+  private userSub: Subscription;
   public tableHeaders: string[] = [
     "lastName",
     "firstName",
@@ -39,11 +39,14 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
-    this.user$.subscribe(user => {
-      console.log(user);
+    this.userSub = this.user$.subscribe(user => {
       this.dataSource.data = user.consultants;
     });
     this.dataSource.sort = this.sort;
+  }
+
+  ngOnDestroy() {
+    this.userSub && this.userSub.unsubscribe();
   }
 
   getUser() {
