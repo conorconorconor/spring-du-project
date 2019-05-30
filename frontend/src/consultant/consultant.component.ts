@@ -22,6 +22,7 @@ import { UserService } from "../user/user.service";
 export class ConsultantComponent implements OnInit {
   public consultant: Consultant = new Consultant();
   public consultants$: Observable<Consultant[]>;
+  public consultantsSub: Subscription;
   public tableHeaders: string[] = [
     "lastName",
     "firstName",
@@ -52,13 +53,19 @@ export class ConsultantComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.getConsultants();
-    this.consultants$.subscribe(results => {
+    this.consultantsSub = this.consultants$.subscribe(results => {
       this.dataSource.data = results;
     });
     this.loggedInUserSub = this.authService.getUser().subscribe(result => {
       this.userId = result._id;
-      console.log(this.userId);
     });
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.loggedInUserSub && this.loggedInUserSub.unsubscribe();
+    this.consultantsSub && this.consultantsSub.unsubscribe();
   }
 
   getConsultants(): void {
