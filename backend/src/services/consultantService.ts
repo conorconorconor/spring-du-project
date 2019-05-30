@@ -14,6 +14,7 @@ export class ConsultantService {
 
   public getConsultants(): Promise<IConsultant[]> {
     return Consultant.find()
+      .sort("lastName")
       .populate("teamManager")
       .exec();
   }

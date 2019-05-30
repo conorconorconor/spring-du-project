@@ -142,8 +142,6 @@ export class ConsultantComponent implements OnInit {
   public applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    this.noResults$.next(
-      this.dataSource.filteredData.length === 0
-    );
+    this.noResults$.next(this.dataSource.filteredData.length === 0);
   }
 }
