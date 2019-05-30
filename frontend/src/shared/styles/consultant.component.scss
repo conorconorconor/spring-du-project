@@ -93,3 +93,13 @@ mat-cell {
   color: #aa091b;
   text-align: center;
 }
+
+.loading-spinner-container {
+  width: 100%;
+  text-align: center;
+  padding: 1em 0;
+
+  .loading-spinner {
+    margin: 0 auto;
+  }
+}

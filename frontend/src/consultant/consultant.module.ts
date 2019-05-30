@@ -55,7 +55,8 @@ import { MatIconModule } from "@angular/material/icon";
     ScrollDispatchModule,
     MatIconModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [
     CommentComponent,
